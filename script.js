@@ -214,7 +214,12 @@ Number(p.stok) <= 0
 `;
 
 });
+function formatRupiah(angka){
 
+return Number(angka || 0)
+.toLocaleString('id-ID');
+
+}
 /* =========================
 POPUP PRODUK
 ========================= */
