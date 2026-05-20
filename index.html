@@ -106,7 +106,7 @@ onclick="toggleSidebar()">
 <h2>🛒 DEFANA</h2>
 
 <div
-id="kategoriList"
+id="kategoriListSidebar"
 class="kategori-list">
 
 </div>
@@ -140,8 +140,12 @@ id="searchInput"
 placeholder="Cari produk..." 
 oninput="renderProduk()">
 
-<button class="clear-search">
+<button
+class="clear-search"
+onclick="clearSearch()">
+
 ✕
+
 </button>
 
 </div>
@@ -222,6 +226,7 @@ Scan QR Pembayaran
 <!-- TOMBOL WA -->
 
 <button
+    
 id="btnWA"
 class="checkout-btn"
 onclick="checkoutWA()"
@@ -229,7 +234,7 @@ style="display:none;">
 
 📲 Pesan via WhatsApp
 
-<button
+<button></button>
 <!-- RESET -->
 
 <button
