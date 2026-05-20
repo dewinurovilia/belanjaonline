@@ -557,3 +557,11 @@ border-radius:50%;
 body{
 padding-bottom:90px;
 }
+.produk-card{
+
+padding:18px;
+border-radius:22px;
+background:#fff;
+box-shadow:0 2px 10px rgba(0,0,0,0.06);
+
+}
