@@ -132,6 +132,8 @@ onclick="toggleSidebar()">
 
 <div class="search-box">
 
+<div class="search-wrapper">
+
 <input 
 type="text" 
 id="searchInput" 
@@ -139,8 +141,10 @@ placeholder="Cari produk..."
 oninput="renderProduk()">
 
 <button class="clear-search">
-x
+✕
 </button>
+
+</div>
 
 </div>
 <!-- PRODUK -->
@@ -150,22 +154,6 @@ x
 <div id="productList" class="products-grid"></div>
 
 </div>
-<!-- =========================
-FLOAT CART
-========================= -->
-
-<div
-class="cart-float"
-onclick="toggleCart()">
-
-🛒
-
-<span id="cartCount">
-0
-</span>
-
-</div>
-
 <!-- =========================
 CART BOX
 ========================= -->
