@@ -182,58 +182,31 @@ return;
 
 }
 
-filtered.forEach(item=>{
+produk.forEach(p => {
 
-list.innerHTML += `
+container.innerHTML += `
 
-<div class="product-card">
+<div class="produk-card"
+onclick="openPopup('${p.id}')">
 
-<div class="product-info">
-
-<div class="product-category">
-${item.kategori || 'Produk'}
+<div class="kategori">
+${p.kategori}
 </div>
 
-<div class="product-name">
-${item.nama}
-</div>
+<h3>${p.nama}</h3>
 
-<div class="product-detail">
-Stock : ${item.stok || 0}
-</div>
+<p class="stok">
+Stock : ${p.stok}
+</p>
 
-<div class="product-price">
-Rp ${Number(item.harga).toLocaleString()}
-</div>
+<p class="harga">
+Rp ${formatRupiah(p.harga)}
+</p>
 
-</div>
-
-${Number(item.stok) <= 0
-
-? `
-
-<button
-class="btn-stok-habis"
-disabled>
-
-Habis
-
-</button>
-
-`
-
-: `
-
-<button
-class="buy-btn"
-onclick="openPopup('${item.id}')">
-
-+
-
-</button>
-
-`
-
+${
+Number(p.stok) <= 0
+? '<span class="habis">Habis</span>'
+: ''
 }
 
 </div>
@@ -241,8 +214,6 @@ onclick="openPopup('${item.id}')">
 `;
 
 });
-
-}
 
 /* =========================
 POPUP PRODUK
