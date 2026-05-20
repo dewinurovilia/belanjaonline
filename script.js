@@ -182,9 +182,9 @@ return;
 
 }
 
-produk.forEach(p => {
+filtered.forEach(p => {
 
-container.innerHTML += `
+list.innerHTML += `
 
 <div class="produk-card"
 onclick="openPopup('${p.id}')">
