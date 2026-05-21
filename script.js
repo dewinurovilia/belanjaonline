@@ -189,25 +189,25 @@ list.innerHTML += `
 <div class="produk-card"
 onclick="openPopup('${p.id}')">
 
-<div class="kategori">
+<div class="produk-kategori">
 ${p.kategori}
 </div>
 
-<h3>${p.nama}</h3>
+<div class="produk-nama">
+${p.nama}
+</div>
 
-<p class="stok">
-Stock : ${p.stok}
-</p>
+<div class="produk-berat">
+${p.berat || '1kg'}
+</div>
 
-<p class="harga">
-Rp ${formatRupiah(p.harga)}
-</p>
+<div class="produk-harga">
+${formatRupiah(p.harga)}
+</div>
 
-${
-Number(p.stok) <= 0
-? '<span class="habis">Habis</span>'
-: ''
-}
+<div class="produk-stok">
+stok : ${p.stok}
+</div>
 
 </div>
 
