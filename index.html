@@ -124,8 +124,12 @@ onclick="toggleSidebar()">
 </button>
 
 <h1>TOKO DEFANA</h1>
-<button id="darkModeToggle">
-🌙
+<button
+id="bantuanBtn"
+onclick="openBantuan()">
+
+❓
+
 </button>
 </div>
 
@@ -516,4 +520,73 @@ maximumAge:0
 }
 
 </script>
+<!-- POPUP BANTUAN -->
 
+<div
+class="popup"
+id="popupBantuan">
+
+<div class="popup-content">
+
+<h2>
+❓ Bantuan Checkout
+</h2>
+
+<div style="
+text-align:left;
+font-size:14px;
+line-height:1.6;
+margin-top:15px;
+">
+
+<b>📍 Lokasi Ditolak?</b>
+
+<br><br>
+
+1. Klik ikon gembok/browser di atas
+
+<br>
+
+2. Aktifkan izin lokasi
+
+<br>
+
+3. Refresh halaman
+
+<br><br>
+
+<b>🛒 Cara Checkout WA</b>
+
+<br><br>
+
+1. Tambahkan produk ke keranjang
+
+<br>
+
+2. Isi nama pemesan
+
+<br>
+
+3. Pilih pembayaran
+
+<br>
+
+4. Klik checkout WhatsApp
+
+<br>
+
+5. Kirim pesan di WhatsApp
+
+</div>
+
+<button
+class="popup-btn"
+onclick="closeBantuan()">
+
+Mengerti
+
+</button>
+
+</div>
+
+</div>
