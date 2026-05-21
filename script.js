@@ -186,7 +186,8 @@ filtered.forEach(p => {
 
 list.innerHTML += `
 
-<div class="produk-card"
+<div class="produk-card
+${Number(p.stok) <= 0 ? 'produk-habis' : ''}"
 onclick="openPopup('${p.id}')">
 
 <div class="produk-left">
