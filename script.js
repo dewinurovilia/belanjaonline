@@ -1063,8 +1063,6 @@ kategoriSidebar.innerHTML = '';
 
       </button>
     `;
-    }
-
   });
 
 }
