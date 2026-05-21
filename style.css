@@ -696,3 +696,60 @@ flex-direction:column;
 gap:10px;
 
 }
+#kategoriList{
+
+display:flex;
+
+gap:10px;
+
+overflow-x:auto;
+
+padding:10px 14px;
+
+scrollbar-width:none;
+
+}
+
+#kategoriList::-webkit-scrollbar{
+
+display:none;
+
+}
+
+#kategoriList button{
+
+border:none;
+
+background:#f1f5f9;
+
+padding:10px 18px;
+
+border-radius:999px;
+
+font-size:14px;
+
+font-weight:600;
+
+color:#444;
+
+white-space:nowrap;
+
+flex-shrink:0;
+
+transition:.2s;
+
+}
+
+#kategoriList button.active{
+
+background:#16a34a;
+
+color:white;
+
+}
+
+#kategoriList button:active{
+
+transform:scale(.96);
+
+}
