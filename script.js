@@ -890,7 +890,13 @@ text +=
 
 const nomor =
 '6281554041777';
+/* RESET CART */
 
+cart = [];
+
+updateCart();
+
+toggleMetode();
 window.location.href =
 `https://wa.me/${nomor}?text=${text}`;
 
