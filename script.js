@@ -668,6 +668,8 @@ countBox.innerHTML = cart.length;
 if(bottomCount){
 bottomCount.innerHTML = cart.length;
 }
+
+}
 /* =========================
 HAPUS CART
 ========================= */
@@ -1172,53 +1174,6 @@ total += item.harga * item.qty;
 
 });
 
-/* TAMPILKAN TOTAL */
-
-document.getElementById(
-'totalBayarText'
-).innerHTML =
-
-'Rp ' +
-total.toLocaleString();
-
-/* BUKA POPUP */
-
-document.getElementById(
-'popupBayar'
-).classList.add('active');
-
-}
-window.tutupPopupBayar = function(){
-
-document.getElementById(
-'popupBayar'
-).classList.remove('active');
-
-}
-
-window.prosesCetakStruk = async function(){
-
-const btn =
-document.querySelector(
-'#popupBayar .popup-btn'
-);
-
-/* LOADING */
-
-btn.disabled = true;
-
-btn.innerHTML = 'Mencetak...';
-
-/* HITUNG TOTAL */
-
-let total = 0;
-
-cart.forEach(item=>{
-
-total += item.harga * item.qty;
-
-});
-
 /* AMBIL UANG */
 
 const uang =
@@ -1305,6 +1260,8 @@ let autoSlide;
 
 /* UPDATE SLIDE */
 function updateSlide(){
+
+  if(!track) return;
 
   track.style.transform =
   `translate3d(-${currentSlide * 100}%,0,0)`;
