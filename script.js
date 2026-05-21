@@ -665,9 +665,6 @@ if(countBox){
 countBox.innerHTML = cart.length;
 }
 
-const bottomCount =
-document.getElementById('bottomCartCount');
-
 if(bottomCount){
 bottomCount.innerHTML = cart.length;
 }
