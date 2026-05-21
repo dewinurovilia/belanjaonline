@@ -639,3 +639,51 @@ color:#ef4444;
 font-weight:bold;
 
 }
+.warning-text{
+
+display:flex;
+align-items:center;
+gap:6px;
+
+background:#fef2f2;
+
+color:#dc2626;
+
+padding:10px 12px;
+
+border-radius:12px;
+
+font-size:13px;
+
+font-weight:600;
+
+margin-bottom:10px;
+
+border:1px solid #fecaca;
+
+animation:shake .3s;
+
+}
+@keyframes shake{
+
+0%{
+transform:translateX(0);
+}
+
+25%{
+transform:translateX(-4px);
+}
+
+50%{
+transform:translateX(4px);
+}
+
+75%{
+transform:translateX(-4px);
+}
+
+100%{
+transform:translateX(0);
+}
+
+}
