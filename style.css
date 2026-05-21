@@ -31,12 +31,16 @@ font-size:18px;
 font-weight:700;
 }
 
-.menu-toggle,
-#darkModeToggle{
+#bantuanBtn{
+
 background:none;
+
 border:none;
-font-size:24px;
+
+font-size:22px;
+
 color:white;
+
 }
 
 /* SEARCH */
