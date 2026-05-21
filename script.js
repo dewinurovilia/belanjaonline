@@ -672,9 +672,6 @@ document.getElementById('bottomCartCount');
 if(bottomCount){
 bottomCount.innerHTML = cart.length;
 }
-
-}
- 
 /* =========================
 HAPUS CART
 ========================= */
