@@ -881,15 +881,14 @@ btn.disabled = true;
 btn.innerHTML = 'Mengirim...';
 
 let text =
-`*PESANAN BARU TOKO DEFANA*%0A%0A`;
+`🛒 PESANAN BARU%0A%0A`;
 
-text += `👤 Nama : ${nama}%0A`;
+text += `👤 ${nama}%0A`;
 
-text += `💳 Pembayaran : ${pembayaran}%0A`;
+text +=
+`💳 ${pembayaran} | 🚚 ${pengiriman}%0A%0A`;
 
-text += `🚚 Pengiriman : ${pengiriman}%0A%0A`;
-
-text += `🛒 *Rincian Pesanan*%0A`;
+text += `📦 Pesanan:%0A`;
 
 let total = 0;
 
@@ -901,14 +900,12 @@ item.harga * item.qty;
 total += subtotal;
 
 text +=
-`- ${item.nama} x${item.qty}%0A`;
-
-text +=
-`Rp ${formatRupiah(subtotal)}%0A%0A`;
+`• ${item.nama} x${item.qty} - Rp${formatRupiah(subtotal)}%0A`;
 
 });
 
-text += `💰 Total : Rp ${formatRupiah(total)}%0A%0A`;
+text +=
+`%0A💰 Total: Rp${formatRupiah(total)}%0A`;
 
 /* AMBIL LOKASI */
 
