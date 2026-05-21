@@ -1334,27 +1334,6 @@ POPUP BANTUAN
 window.openBantuan = function(){
 
 document
-.getElementById(
-'popupBantuan'
-)
-.classList.add('active');
-
-}
-
-window.closeBantuan = function(){
-
-document
-.getElementById(
-'popupBantuan'
-)
-.classList.remove('active');
-
-}
-<script>
-
-function openBantuan(){
-
-document
 .getElementById('popupBantuan')
 .classList.add('active');
 
@@ -1362,7 +1341,7 @@ document.body.classList.add('popup-open');
 
 }
 
-function closeBantuan(){
+window.closeBantuan = function(){
 
 document
 .getElementById('popupBantuan')
@@ -1371,5 +1350,3 @@ document
 document.body.classList.remove('popup-open');
 
 }
-
-</script>
