@@ -1380,3 +1380,26 @@ toast.classList.remove('show');
 },2500);
 
 }
+/* =========================
+POPUP BANTUAN
+========================= */
+
+window.openBantuan = function(){
+
+document
+.getElementById(
+'popupBantuan'
+)
+.classList.add('active');
+
+}
+
+window.closeBantuan = function(){
+
+document
+.getElementById(
+'popupBantuan'
+)
+.classList.remove('active');
+
+}
