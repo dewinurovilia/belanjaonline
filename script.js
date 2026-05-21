@@ -214,6 +214,9 @@ Number(p.stok) <= 0
 `;
 
 });
+
+} // <- INI YANG KURANG
+
 function formatRupiah(angka){
 
 return Number(angka || 0)
@@ -1489,4 +1492,5 @@ document.body.classList.add('dark');
 
 darkBtn.innerHTML = '☀️';
 
+}
 }
