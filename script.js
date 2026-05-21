@@ -207,7 +207,7 @@ ${p.nama}
 </div>
 
 <div class="produk-harga">
-${formatRupiah(p.harga)}
+Rp ${formatRupiah(p.harga)}
 </div>
 
 </div>
