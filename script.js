@@ -869,7 +869,7 @@ text +=
 `https://maps.app.goo.gl/Sqf951NhZioxFuC2A`;
 
 const nomor =
-'628xxxxxxxxxx';
+'6281554041777';
 
 window.location.href =
 `https://wa.me/${nomor}?text=${text}`;
