@@ -205,10 +205,6 @@ stok : ${p.stok}
 ${p.nama}
 </div>
 
-<div class="produk-berat">
-${p.berat || '1kg'}
-</div>
-
 <div class="produk-harga">
 ${formatRupiah(p.harga)}
 </div>
