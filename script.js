@@ -374,20 +374,34 @@ JIKA SUDAH ADA DI CART
 
 if(existing){
 
+/* RESET JIKA MELEBIHI */
+
+if(existing.qty >= stok){
+
+existing.qty = 0;
+
+}
+
+/* TOTAL BARU */
+
 const totalQty =
 existing.qty + qty;
+
+/* VALIDASI */
 
 if(totalQty > stok){
 
 showToast(
-'Stock tidak cukup'
+'Maksimal stock hanya ' + stok
 );
 
-return;
+existing.qty = stok;
+
+}else{
+
+existing.qty = totalQty;
 
 }
-
-existing.qty += qty;
 
 }else{
 
@@ -906,6 +920,17 @@ cart = [];
 updateCart();
 
 toggleMetode();
+/* RESET CART */
+
+cart = [];
+
+updateCart();
+
+toggleMetode();
+
+localStorage.removeItem(
+'cartDefana'
+);
 window.location.href =
 `https://wa.me/${nomor}?text=${text}`;
 
