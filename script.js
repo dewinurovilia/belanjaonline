@@ -1493,4 +1493,3 @@ document.body.classList.add('dark');
 darkBtn.innerHTML = '☀️';
 
 }
-}
