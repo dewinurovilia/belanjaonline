@@ -492,9 +492,13 @@ overflow:hidden;
 }
 .produk-left{
 
+width:95px;
+
 display:flex;
 flex-direction:column;
-gap:2px;
+justify-content:center;
+
+flex-shrink:0;
 
 }
 
@@ -504,12 +508,19 @@ font-size:13px;
 color:#666;
 line-height:1.2;
 
+min-height:32px;
+
+display:flex;
+align-items:flex-end;
+
 }
 
 .produk-stok{
 
 font-size:11px;
 color:#888;
+
+margin-top:2px;
 
 }
 
