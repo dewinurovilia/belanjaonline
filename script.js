@@ -600,7 +600,6 @@ if(bottomCount){
 bottomCount.innerHTML = cart.length;
 }
 
-}
 /* TOTAL */
 
 if(totalBox){
