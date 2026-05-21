@@ -596,3 +596,36 @@ body{
 padding-bottom:90px;
 }
 
+.produk-habis{
+
+background:#e5e7eb !important;
+
+opacity:.8;
+
+}
+
+.produk-habis .produk-harga{
+
+color:#6b7280 !important;
+
+}
+
+.produk-habis .produk-nama{
+
+color:#6b7280;
+
+}
+
+.produk-habis .produk-kategori{
+
+color:#9ca3af;
+
+}
+
+.produk-habis .produk-stok{
+
+color:#ef4444;
+
+font-weight:bold;
+
+}
