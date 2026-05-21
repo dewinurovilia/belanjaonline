@@ -1024,9 +1024,6 @@ RENDER KATEGORI (UPDATED)
 ========================= */
 function renderKategori(){
 
-  const kategoriList =
-  document.getElementById('kategoriList');
-
   const kategoriSidebar =
   document.getElementById('kategoriListSidebar');
 
