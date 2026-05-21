@@ -1023,11 +1023,12 @@ function resetButton(button,text){
 RENDER KATEGORI (UPDATED)
 ========================= */
 function renderKategori(){
-
+const kategoriList =
+document.getElementById('kategoriList');
   const kategoriSidebar =
   document.getElementById('kategoriListSidebar');
 
-  if(!kategoriList) return;
+  if(!kategoriSidebar) return;
 
   const kategoriUnik = [
     'Semua',
@@ -1038,7 +1039,9 @@ function renderKategori(){
     )
   ];
 
-  kategoriList.innerHTML = '';
+ if(kategoriSidebar){
+kategoriSidebar.innerHTML = '';
+}
 
   if(kategoriSidebar){
     kategoriSidebar.innerHTML = '';
@@ -1060,11 +1063,6 @@ function renderKategori(){
 
       </button>
     `;
-
-    kategoriList.innerHTML += tombol;
-
-    if(kategoriSidebar){
-      kategoriSidebar.innerHTML += tombol;
     }
 
   });
