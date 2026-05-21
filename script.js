@@ -485,7 +485,11 @@ cartBox.innerHTML = '';
 let total = 0;
 
 if(cart.length===0){
+if(menuCart){
 
+menuCart.classList.remove('active');
+
+}
 cartBox.innerHTML =
 '<p>Keranjang kosong</p>';
 
@@ -499,7 +503,8 @@ countBox.innerHTML='0';
 
 const bottomCount =
 document.getElementById('bottomCartCount');
-
+const menuCart =
+document.querySelector('.menu-cart');
 if(bottomCount){
 bottomCount.innerHTML='0';
 }
@@ -507,7 +512,11 @@ bottomCount.innerHTML='0';
 return;
 
 }
+if(menuCart){
 
+menuCart.classList.add('active');
+
+}
 cart.forEach((item,index)=>{
 
 const subtotal =
