@@ -213,8 +213,13 @@ height:100%;
 background:white;
 z-index:999;
 transition:.3s;
-overflow:auto;
+overflow-y:auto;
+overflow-x:hidden;
 padding:18px;
+
+-webkit-overflow-scrolling:touch;
+
+touch-action:pan-y;
 }
 
 .cart-box.active{
