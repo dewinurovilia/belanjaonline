@@ -483,6 +483,9 @@ qr.style.display='none';
 
 function updateCart(){
 
+const menuCart =
+document.querySelector('.menu-cart');
+
 const cartBox =
 document.getElementById('cartItems');
 
@@ -492,18 +495,25 @@ document.getElementById('cartTotal');
 const countBox =
 document.getElementById('cartCount');
 
+const bottomCount =
+document.getElementById('bottomCartCount');
+
 if(!cartBox) return;
 
 cartBox.innerHTML = '';
 
 let total = 0;
 
+/* CART KOSONG */
+
 if(cart.length===0){
+
 if(menuCart){
 
 menuCart.classList.remove('active');
 
 }
+
 cartBox.innerHTML =
 '<p>Keranjang kosong</p>';
 
@@ -515,10 +525,6 @@ if(countBox){
 countBox.innerHTML='0';
 }
 
-const bottomCount =
-document.getElementById('bottomCartCount');
-const menuCart =
-document.querySelector('.menu-cart');
 if(bottomCount){
 bottomCount.innerHTML='0';
 }
@@ -526,11 +532,15 @@ bottomCount.innerHTML='0';
 return;
 
 }
+
+/* CART ADA ISI */
+
 if(menuCart){
 
 menuCart.classList.add('active');
 
 }
+
 cart.forEach((item,index)=>{
 
 const subtotal =
@@ -569,6 +579,28 @@ onclick="hapusCart(${index})">
 
 });
 
+/* TOTAL */
+
+if(totalBox){
+
+totalBox.innerHTML =
+
+'Total : Rp ' +
+total.toLocaleString();
+
+}
+
+/* JUMLAH */
+
+if(countBox){
+countBox.innerHTML = cart.length;
+}
+
+if(bottomCount){
+bottomCount.innerHTML = cart.length;
+}
+
+}
 /* TOTAL */
 
 if(totalBox){
@@ -920,13 +952,6 @@ cart = [];
 updateCart();
 
 toggleMetode();
-/* RESET CART */
-
-cart = [];
-
-updateCart();
-
-toggleMetode();
 
 localStorage.removeItem(
 'cartDefana'
@@ -1103,6 +1128,11 @@ kategoriSidebar.innerHTML = '';
 
       </button>
     `;
+   if(kategoriSidebar){
+
+kategoriSidebar.innerHTML += tombol;
+
+}
   });
 
 }
@@ -1319,36 +1349,6 @@ slides.forEach(slide => {
   });
 
 });
-const darkBtn =
-document.getElementById('darkModeToggle');
-
-darkBtn.onclick = () => {
-
-document.body.classList.toggle('dark');
-
-if(document.body.classList.contains('dark')){
-
-localStorage.setItem('theme','dark');
-
-darkBtn.innerHTML = '☀️';
-
-}else{
-
-localStorage.setItem('theme','light');
-
-darkBtn.innerHTML = '🌙';
-
-}
-
-};
-
-if(localStorage.getItem('theme') === 'dark'){
-
-document.body.classList.add('dark');
-
-darkBtn.innerHTML = '☀️';
-
-}
 /* =========================
 TOAST
 ========================= */
