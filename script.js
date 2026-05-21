@@ -1350,3 +1350,26 @@ document
 .classList.remove('active');
 
 }
+<script>
+
+function openBantuan(){
+
+document
+.getElementById('popupBantuan')
+.classList.add('active');
+
+document.body.classList.add('popup-open');
+
+}
+
+function closeBantuan(){
+
+document
+.getElementById('popupBantuan')
+.classList.remove('active');
+
+document.body.classList.remove('popup-open');
+
+}
+
+</script>
