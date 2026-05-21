@@ -162,17 +162,11 @@ onclick="clearSearch()">
 CART BOX
 ========================= -->
 
-<div
-class="cart-box"
-id="cartBox">
-
-<!-- HEADER -->
+<div class="cart-box" id="cartBox">
 
 <div class="cart-header">
 
-<h2>
-Keranjang
-</h2>
+<h2>Keranjang</h2>
 
 <button
 class="close-btn"
@@ -186,10 +180,26 @@ onclick="toggleCart()">
 
 <!-- FORM -->
 
+<div class="cart-form">
+
 <input
 type="text"
 id="namaPemesan"
 placeholder="👤 Nama Pemesan">
+
+<select
+id="pengiriman"
+onchange="toggleMetode()">
+
+<option value="Diantar">
+🚚 Diantar
+</option>
+
+<option value="Ambil Sendiri">
+🏪 Ambil Sendiri
+</option>
+
+</select>
 
 <select
 id="pembayaran"
@@ -205,9 +215,11 @@ onchange="toggleQR()">
 
 </select>
 
+</div>
+
 <!-- QR -->
 
-<div id="qrBox">
+<div id="qrBox" style="display:none;">
 
 <p class="qr-title">
 Scan QR Pembayaran
@@ -217,25 +229,22 @@ Scan QR Pembayaran
 
 </div>
 
-<!-- CART -->
+<!-- RINCIAN BELANJA -->
+
 <div id="cartItems"></div>
 
 <div id="cartTotal"></div>
 
-
-<!-- TOMBOL WA -->
+<!-- BUTTON -->
 
 <button
-    
 id="btnWA"
 class="checkout-btn"
-onclick="checkoutWA()"
-style="display:none;">
+onclick="checkoutWA()">
 
 📲 Pesan via WhatsApp
 
-<button>
-<!-- RESET -->
+</button>
 
 <button
 class="reset-btn"
@@ -246,7 +255,6 @@ onclick="resetCart()">
 </button>
 
 </div>
-
 <!-- =========================
 POPUP PRODUK
 ========================= -->
