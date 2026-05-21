@@ -860,13 +860,33 @@ text +=
 
 text += `💰 Total : Rp ${formatRupiah(total)}%0A%0A`;
 
-/* MAPS TOKO */
+/* AMBIL LOKASI */
+
+const izinLokasi =
+await ambilLokasiUser();
+
+if(!izinLokasi){
+
+showToast(
+'Lokasi wajib diaktifkan'
+);
+
+btn.disabled = false;
+
+btn.innerHTML =
+'📲 Pesan via WhatsApp';
+
+return;
+
+}
+
+/* KIRIM LOKASI PEMBELI */
 
 text +=
-`📍 Lokasi Toko:%0A`;
+`📍 Lokasi Pembeli:%0A`;
 
 text +=
-`https://maps.app.goo.gl/Sqf951NhZioxFuC2A`;
+`${lokasiUser}%0A%0A`;
 
 const nomor =
 '6281554041777';
