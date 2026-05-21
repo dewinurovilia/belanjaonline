@@ -189,8 +189,16 @@ list.innerHTML += `
 <div class="produk-card"
 onclick="openPopup('${p.id}')">
 
+<div class="produk-left">
+
 <div class="produk-kategori">
 ${p.kategori}
+</div>
+
+<div class="produk-stok">
+stok : ${p.stok}
+</div>
+
 </div>
 
 <div class="produk-nama">
@@ -205,14 +213,9 @@ ${p.berat || '1kg'}
 ${formatRupiah(p.harga)}
 </div>
 
-<div class="produk-stok">
-stok : ${p.stok}
-</div>
-
 </div>
 
 `;
-
 });
 
 } // <- INI YANG KURANG
