@@ -1,14 +1,16 @@
 {
+  "id": "/belanjaonline/",
   "name": "Online Toko Defana",
   "short_name": "Toko Defana",
   "description": "Aplikasi Online Toko Defana",
   "start_url": "/belanjaonline/",
+  "scope": "/belanjaonline/",
   "display": "fullscreen",
   "background_color": "#ffffff",
   "theme_color": "#16a34a",
   "orientation": "portrait",
-  "scope": "/",
-  "lang": "id",
+  "lang": "id"
+}
 
   "icons": [
     {
