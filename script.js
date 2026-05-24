@@ -921,26 +921,6 @@ text +=
 text +=
 `%0A💰 Total: Rp${formatRupiah(total)}%0A`;
 
-/* AMBIL LOKASI */
-
-const izinLokasi =
-await ambilLokasiUser();
-
-if(!izinLokasi){
-
-showToast(
-'Lokasi wajib diaktifkan'
-);
-
-btn.disabled = false;
-
-btn.innerHTML =
-'📲 Pesan via WhatsApp';
-
-return;
-
-}
-
 /* KIRIM LOKASI PEMBELI */
 
 text +=
