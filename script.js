@@ -854,27 +854,6 @@ console.log(error);
 }
 
 }
-const dataPesanan = {
-
-    nama: document.getElementById("namaPemesan").value,
-
-    pengiriman: document.getElementById("pengiriman").value,
-
-    pembayaran: document.getElementById("pembayaran").value,
-
-    produk: cart,
-
-    total: total,
-
-    waktu: new Date().toLocaleString(),
-
-    status: "Belum Dicetak"
-
-};
-
-db.ref("pesanan").push(dataPesanan);
-
-window.open(urlWA);
 /* =========================
 CHECKOUT WHATSAPP
 ========================= */
@@ -1037,7 +1016,36 @@ pembayaran,
 totalBelanja,
 cart
 );
+// SIMPAN PESANAN FIREBASE
 
+const dataPesanan = {
+
+    nama: nama,
+
+    pengiriman: pengiriman,
+
+    pembayaran: pembayaran,
+
+    produk: cart,
+
+    total: totalBelanja,
+
+    waktu: new Date().toLocaleString(),
+
+    status: "Belum Dicetak"
+
+};
+
+await set(
+
+ref(
+firebaseDB,
+'pesanan/' + Date.now()
+),
+
+dataPesanan
+
+);
 /* DELAY */
 
 await new Promise(resolve =>
