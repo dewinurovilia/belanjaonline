@@ -889,7 +889,6 @@ showToast('Keranjang kosong');
 return;
 
 }
-/* VALIDASI MINIMAL BELANJA */
 
 /* VALIDASI MINIMAL BELANJA */
 
@@ -907,10 +906,25 @@ text += `📦 Pesanan:%0A`;
 
 cart.forEach(item=>{
 
-totalBelanja +=
+const subtotal =
 item.harga * item.qty;
 
+totalBelanja += subtotal;
+
+text +=
+`• ${item.nama}%0A`;
+
+text +=
+`${item.qty} x Rp ${Number(item.harga)
+.toLocaleString('id-ID')}%0A`;
+
+text +=
+`Subtotal : Rp ${subtotal
+.toLocaleString('id-ID')}%0A%0A`;
+
 });
+
+/* VALIDASI MINIMAL */
 
 if(totalBelanja < 50000){
 
