@@ -882,16 +882,6 @@ showToast('Nama wajib diisi');
 return;
 
 }
-/* AMBIL LOKASI USER */
-
-const izinLokasi =
-await ambilLokasiUser();
-
-if(!izinLokasi){
-
-return;
-
-}
 if(cart.length <= 0){
 
 showToast('Keranjang kosong');
@@ -899,12 +889,11 @@ showToast('Keranjang kosong');
 return;
 
 }
+/* VALIDASI MINIMAL BELANJA */
 
-/* LOADING */
+/* VALIDASI MINIMAL BELANJA */
 
-btn.disabled = true;
-
-btn.innerHTML = 'Mengirim...';
+let totalBelanja = 0;
 
 let text =
 `🛒 PESANAN BARU%0A%0A`;
@@ -916,39 +905,41 @@ text +=
 
 text += `📦 Pesanan:%0A`;
 
-let total = 0;
+cart.forEach(item=>{
 
-cart.forEach(item => {
-
-const subtotal =
+totalBelanja +=
 item.harga * item.qty;
-
-total += subtotal;
-
-text +=
-`• ${item.nama} x${item.qty} - Rp${formatRupiah(subtotal)}%0A`;
 
 });
 
-text +=
-`%0A💰 Total: Rp${formatRupiah(total)}%0A`;
+if(totalBelanja < 50000){
 
-/* KIRIM LOKASI PEMBELI */
+showToast(
+'Minimal checkout Rp50.000'
+);
 
-text +=
-`📍 Lokasi Pembeli:%0A`;
+return;
 
-text +=
-`${lokasiUser}%0A%0A`;
+}
+
+/* AMBIL LOKASI USER */
+
+const izinLokasi =
+await ambilLokasiUser();
+
+if(!izinLokasi){
+
+return;
+
+}
 
 /* KIRIM REKAP */
-
 await kirimRekap(
 
 nama,
 pengiriman,
 pembayaran,
-total,
+totalBelanja,
 cart
 
 );
