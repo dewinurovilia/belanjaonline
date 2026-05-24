@@ -866,6 +866,14 @@ document.getElementById('btnWA');
 
 if(btn.disabled) return;
 
+/* LOADING */
+
+btn.disabled = true;
+
+btn.innerHTML = 'Mengirim...';
+
+/* DATA */
+
 const nama =
 document.getElementById('namaPemesan').value;
 
@@ -875,34 +883,56 @@ document.getElementById('pembayaran').value;
 const pengiriman =
 document.getElementById('pengiriman').value;
 
+/* VALIDASI */
+
 if(!nama){
 
 showToast('Nama wajib diisi');
 
+btn.disabled = false;
+
+btn.innerHTML =
+'📲 Pesan via WhatsApp';
+
 return;
 
 }
+
 if(cart.length <= 0){
 
 showToast('Keranjang kosong');
 
+btn.disabled = false;
+
+btn.innerHTML =
+'📲 Pesan via WhatsApp';
+
 return;
 
 }
 
-/* VALIDASI MINIMAL BELANJA */
+/* TOTAL */
 
 let totalBelanja = 0;
 
-let text =
-`🛒 PESANAN BARU%0A%0A`;
+/* HEADER */
 
-text += `👤 ${nama}%0A`;
+let text =
+`🛒 *PESANAN BARU*%0A%0A`;
 
 text +=
-`💳 ${pembayaran} | 🚚 ${pengiriman}%0A%0A`;
+`👤 Nama : ${nama}%0A`;
 
-text += `📦 Pesanan:%0A`;
+text +=
+`💳 Pembayaran : ${pembayaran}%0A`;
+
+text +=
+`🚚 Pengiriman : ${pengiriman}%0A%0A`;
+
+text +=
+`📦 *RINCIAN PESANAN*%0A%0A`;
+
+/* PRODUK */
 
 cart.forEach(item=>{
 
@@ -924,7 +954,13 @@ text +=
 
 });
 
-/* VALIDASI MINIMAL */
+/* TOTAL */
+
+text +=
+`💰 TOTAL : Rp ${totalBelanja
+.toLocaleString('id-ID')}%0A%0A`;
+
+/* MINIMAL */
 
 if(totalBelanja < 50000){
 
@@ -932,45 +968,72 @@ showToast(
 'Minimal checkout Rp50.000'
 );
 
+btn.disabled = false;
+
+btn.innerHTML =
+'📲 Pesan via WhatsApp';
+
 return;
 
 }
 
-/* AMBIL LOKASI USER */
+/* LOKASI */
 
 const izinLokasi =
 await ambilLokasiUser();
 
 if(!izinLokasi){
 
+btn.disabled = false;
+
+btn.innerHTML =
+'📲 Pesan via WhatsApp';
+
 return;
 
 }
 
-/* KIRIM REKAP */
-await kirimRekap(
+/* TAMBAH LOKASI */
 
+if(typeof lokasiUser !== 'undefined'
+&& lokasiUser){
+
+text +=
+`📍 Lokasi:%0A${lokasiUser}%0A%0A`;
+
+}
+
+/* PENUTUP */
+
+text +=
+`Terima kasih 🙏`;
+
+/* KIRIM REKAP */
+
+await kirimRekap(
 nama,
 pengiriman,
 pembayaran,
 totalBelanja,
 cart
-
 );
 
-/* TUNGGU AGAR GOOGLE SHEET MASUK */
+/* DELAY */
 
 await new Promise(resolve =>
-setTimeout(resolve,2000)
+setTimeout(resolve,1500)
 );
 
-/* KURANGI STOCK */
+/* KURANGI STOK */
 
 await kurangiStockCheckout();
 
+/* NOMOR WA */
+
 const nomor =
 '6281554041777';
-/* RESET CART */
+
+/* RESET */
 
 cart = [];
 
@@ -982,9 +1045,12 @@ localStorage.removeItem(
 'cartDefana'
 );
 
+/* BUKA WA */
+
 window.location.href =
 `https://wa.me/${nomor}?text=${text}`;
-/* KEMBALIKAN TOMBOL */
+
+/* RESET BUTTON */
 
 setTimeout(()=>{
 
