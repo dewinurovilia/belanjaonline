@@ -82,7 +82,7 @@ LOAD PRODUK FIREBASE
 function loadProduk(){
 
 const produkRef =
-ref(firebaseDB);
+ref(firebaseDB,'produk');
 
 onValue(produkRef,(snapshot)=>{
 
@@ -714,10 +714,9 @@ await fetch(
 
 {
 method:'POST',
-mode:'no-cors',
 
 headers:{
-'Content-Type':'text/plain'
+'Content-Type':'application/json'
 },
 
 body:JSON.stringify({
@@ -929,8 +928,25 @@ text +=
 text +=
 `${lokasiUser}%0A%0A`;
 
+/* KIRIM REKAP */
+
+await kirimRekap(
+
+nama,
+pengiriman,
+pembayaran,
+total,
+cart
+
+);
+
+/* KURANGI STOCK */
+
+await kurangiStockCheckout();
+
 const nomor =
 '6281554041777';
+
 /* RESET CART */
 
 cart = [];
@@ -942,9 +958,9 @@ toggleMetode();
 localStorage.removeItem(
 'cartDefana'
 );
+
 window.location.href =
 `https://wa.me/${nomor}?text=${text}`;
-
 /* KEMBALIKAN TOMBOL */
 
 setTimeout(()=>{
@@ -977,7 +993,7 @@ async function kurangiStockCheckout(){
     const stokBaru = Math.max(stokSekarang - itemCart.qty, 0);
 
     await set(
-      ref(firebaseDB, indexProduk + '/stok'),
+      ref(firebaseDB, 'produk/' + indexProduk + '/stok'),
       stokBaru
     );
 
