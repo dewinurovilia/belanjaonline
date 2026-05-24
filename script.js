@@ -1,3 +1,19 @@
+// FIREBASE CONFIG
+const firebaseConfig = {
+
+  apiKey: "AIzaSyAvbER9UML8e-FfwEsgnPvWdOVR2TE1zFY",
+  authDomain: "rekap-pesanan.firebaseapp.com",
+  databaseURL: "https://rekap-pesanan-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "rekap-pesanan",
+  storageBucket: "rekap-pesanan.firebasestorage.app",
+  messagingSenderId: "394281706606",
+  appId: "1:394281706606:web:b7f1de991819396f40b27f",
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database();
 /* =========================
 FIREBASE IMPORT
 ========================= */
@@ -854,7 +870,27 @@ console.log(error);
 }
 
 }
+const dataPesanan = {
 
+    nama: document.getElementById("namaPemesan").value,
+
+    pengiriman: document.getElementById("pengiriman").value,
+
+    pembayaran: document.getElementById("pembayaran").value,
+
+    produk: cart,
+
+    total: total,
+
+    waktu: new Date().toLocaleString(),
+
+    status: "Belum Dicetak"
+
+};
+
+db.ref("pesanan").push(dataPesanan);
+
+window.open(urlWA);
 /* =========================
 CHECKOUT WHATSAPP
 ========================= */
