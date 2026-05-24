@@ -709,10 +709,19 @@ nama:nama,
 pengiriman:pengiriman,
 pembayaran:pembayaran,
 total:total,
-items:items
+
+items: items.map(item => ({
+
+nama:item.nama,
+qty:item.qty,
+harga:item.harga,
+subtotal:item.harga * item.qty
+
+})),
+
+lokasi: lokasiUser
 
 };
-
 try{
 
 await fetch(
