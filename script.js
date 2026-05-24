@@ -720,8 +720,13 @@ headers:{
 'Content-Type':'text/plain'
 },
 
-body:JSON.stringify(data)
-lokasi: lokasiUser,
+body:JSON.stringify({
+
+...data,
+lokasi: lokasiUser
+
+})
+
 }
 
 );
