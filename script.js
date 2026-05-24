@@ -96,7 +96,14 @@ return;
 
 }
 
-produk = Object.values(data);
+produk = Object.entries(data).map(
+([key,value]) => ({
+
+firebaseKey:key,
+...value
+
+})
+);
 
 renderKategori();
 
@@ -980,26 +987,41 @@ KURANGI STOCK CHECKOUT
 
 async function kurangiStockCheckout(){
 
-  for(let i = 0; i < cart.length; i++){
+for(let i = 0; i < cart.length; i++){
 
-    const itemCart = cart[i];
+const itemCart = cart[i];
 
-    const indexProduk = produk.findIndex(p => p.id == itemCart.id);
+const indexProduk =
+produk.findIndex(
+p => p.id == itemCart.id
+);
 
-    if(indexProduk === -1) continue;
+if(indexProduk === -1) continue;
 
-    const stokSekarang = Number(produk[indexProduk].stok || 0);
+const stokSekarang =
+Number(produk[indexProduk].stok || 0);
 
-    const stokBaru = Math.max(stokSekarang - itemCart.qty, 0);
+const stokBaru =
+Math.max(
+stokSekarang - itemCart.qty,
+0
+);
 
-    await set(
-     produk[indexProduk].firebaseKey +'/stok'),
-      stokBaru
-    );
+await set(
 
-    produk[indexProduk].stok = stokBaru;
+ref(
+firebaseDB,
+produk[indexProduk].firebaseKey + '/stok'
+),
 
-  }
+stokBaru
+
+);
+
+produk[indexProduk].stok =
+stokBaru;
+
+}
 
 }
 
