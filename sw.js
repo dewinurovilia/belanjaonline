@@ -1,4 +1,4 @@
-const CACHE_NAME = 'toko-defana-v11';
+const CACHE_NAME = 'toko-defana-v12';
 
 const urlsToCache = [
 
