@@ -731,12 +731,13 @@ await fetch(
 {
 method:'POST',
 
+mode:'no-cors',
+
 headers:{
-'Content-Type':'application/json'
+'Content-Type':'text/plain'
 },
 
-body:JSON.stringify({
-})
+body:JSON.stringify(data)
 
 }
 
@@ -952,13 +953,18 @@ cart
 
 );
 
+/* TUNGGU AGAR GOOGLE SHEET MASUK */
+
+await new Promise(resolve =>
+setTimeout(resolve,2000)
+);
+
 /* KURANGI STOCK */
 
 await kurangiStockCheckout();
 
 const nomor =
 '6281554041777';
-
 /* RESET CART */
 
 cart = [];
