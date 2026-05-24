@@ -736,10 +736,6 @@ headers:{
 },
 
 body:JSON.stringify({
-
-...data,
-lokasi: lokasiUser
-
 })
 
 }
