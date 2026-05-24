@@ -721,7 +721,7 @@ headers:{
 },
 
 body:JSON.stringify(data)
-
+lokasi: lokasiUser,
 }
 
 );
@@ -865,7 +865,16 @@ showToast('Nama wajib diisi');
 return;
 
 }
+/* AMBIL LOKASI USER */
 
+const izinLokasi =
+await ambilLokasiUser();
+
+if(!izinLokasi){
+
+return;
+
+}
 if(cart.length <= 0){
 
 showToast('Keranjang kosong');
