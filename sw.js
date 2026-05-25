@@ -59,11 +59,21 @@ return self.clients.claim();
 
 self.addEventListener('fetch', event => {
 
+if(event.request.method !== 'GET'){
+return;
+}
+
 event.respondWith(
 
-fetch(event.request)
+caches.match(event.request)
+.then(cached => {
 
+return cached || fetch(event.request)
 .then(response => {
+
+if(!response || response.status !== 200){
+return response;
+}
 
 const responseClone =
 response.clone();
@@ -80,9 +90,9 @@ responseClone
 
 return response;
 
-})
+});
 
-.catch(() => caches.match(event.request))
+})
 
 );
 
