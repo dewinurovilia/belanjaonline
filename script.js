@@ -1022,31 +1022,6 @@ text +=
 
 /* KIRIM REKAP */
 
-await kirimRekap(
-nama,
-pengiriman,
-pembayaran,
-totalBelanja,
-cart
-);
-await kirimPesananKasir({
-
-    nama : nama,
-
-    pengiriman : pengiriman,
-
-    pembayaran : pembayaran,
-
-    total : totalBelanja,
-
-    items : cart,
-
-    tanggal :
-    new Date().toLocaleString()
-
-});
-// SIMPAN PESANAN FIREBASE
-
 const dataPesanan = {
 
     nama: nama,
