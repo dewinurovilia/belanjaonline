@@ -690,7 +690,20 @@ updateCart();
 toggleMetode();
 
 }
+/* =========================
+KIRIM PESANAN KE KASIR
+========================= */
 
+async function kirimPesananKasir(data){
+
+    const id = Date.now();
+
+    await set(
+        ref(firebaseDB, "pesanan/" + id),
+        data
+    );
+
+}
 /* =========================
 KIRIM REKAP GOOGLE SHEET
 ========================= */
