@@ -82,7 +82,7 @@ LOAD PRODUK FIREBASE
 function loadProduk(){
 
 const produkRef =
-ref(firebaseDB);
+ref(firebaseDB, "produk");
 
 onValue(produkRef,(snapshot)=>{
 
@@ -1021,7 +1021,19 @@ text +=
 `Terima kasih 🙏`;
 
 /* KIRIM REKAP */
+await kirimRekap(
 
+    nama,
+
+    pengiriman,
+
+    pembayaran,
+
+    totalBelanja,
+
+    cart
+
+);
 const dataPesanan = {
 
     nama: nama,
