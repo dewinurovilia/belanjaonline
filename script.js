@@ -1496,13 +1496,3 @@ document
 document.body.classList.remove('popup-open');
 
 }
-async function kirimPesananKasir(data){
-
-    const id = Date.now();
-
-    await set(
-        ref(firebaseDB, 'pesanan/' + id),
-        data
-    );
-
-}
