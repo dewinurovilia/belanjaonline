@@ -1016,6 +1016,22 @@ pembayaran,
 totalBelanja,
 cart
 );
+await kirimPesananKasir({
+
+    nama : nama,
+
+    pengiriman : pengiriman,
+
+    pembayaran : pembayaran,
+
+    total : total,
+
+    items : items,
+
+    tanggal :
+    new Date().toLocaleString()
+
+});
 // SIMPAN PESANAN FIREBASE
 
 const dataPesanan = {
@@ -1490,5 +1506,15 @@ document
 .classList.remove('active');
 
 document.body.classList.remove('popup-open');
+
+}
+async function kirimPesananKasir(data){
+
+    const id = Date.now();
+
+    await set(
+        ref(firebaseDB, 'pesanan/' + id),
+        data
+    );
 
 }
