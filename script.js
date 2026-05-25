@@ -757,7 +757,38 @@ error
 }
 
 }
+async function simpanPesananFirebase(
+nama,
+items,
+total
+){
 
+const dataPesanan = {
+
+nama:nama,
+
+produk:items,
+
+total:total,
+
+waktu:new Date().toLocaleString(),
+
+status:"Belum Dicetak"
+
+};
+
+await set(
+
+ref(
+firebaseDB,
+'pesanan/' + Date.now()
+),
+
+dataPesanan
+
+);
+
+}
 /* =========================
 TOGGLE METODE
 ========================= */
@@ -1006,7 +1037,7 @@ text +=
 /* PENUTUP */
 
 text +=
-`Terima kasih 🙏`;
+`Terima kasih`;
 
 /* KIRIM REKAP */
 
@@ -1017,7 +1048,11 @@ pembayaran,
 totalBelanja,
 cart
 );
-
+await simpanPesananFirebase(
+nama,
+cart,
+totalBelanja
+);
 /* DELAY */
 
 await new Promise(resolve =>
