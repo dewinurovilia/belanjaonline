@@ -387,7 +387,9 @@ border-radius:16px;
 background:#1f2b46;
 
 color:#ffffff;
-
+-webkit-text-fill-color:#fff;
+caret-color:#fff;
+opacity:1;
 font-size:24px;
 font-weight:bold;
 
