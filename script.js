@@ -1137,7 +1137,7 @@ await set(
 
 ref(
 firebaseDB,
-produk[indexProduk].firebaseKey + '/stok'
+'produk/' + produk[indexProduk].firebaseKey + '/stok'
 ),
 
 stokBaru
