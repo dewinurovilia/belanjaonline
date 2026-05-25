@@ -357,6 +357,15 @@ text-align:center;
 .popup-content h2{
 margin-bottom:10px;
 }
+
+.popup-qty{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+margin:20px 0;
+}
+
 .popup-qty button{
 width:40px;
 height:40px;
@@ -367,27 +376,12 @@ font-size:20px;
 border-radius:10px;
 }
 
-#popupQty{
-
-width:90px;
-height:55px;
-
-border:none;
-border-radius:16px;
-
-background:#1f2b46;
-
-color:#ffffff;
--webkit-text-fill-color:#fff;
-caret-color:#fff;
-opacity:1;
-font-size:24px;
-font-weight:bold;
-
+.popup-qty input{
+width:70px;
 text-align:center;
-
-outline:none;
-
+padding:10px;
+border:1px solid #ddd;
+border-radius:10px;
 }
 
 .popup-btn{
