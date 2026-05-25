@@ -1024,9 +1024,9 @@ await kirimPesananKasir({
 
     pembayaran : pembayaran,
 
-    total : total,
+    total : totalBelanja,
 
-    items : items,
+    items : cart,
 
     tanggal :
     new Date().toLocaleString()
