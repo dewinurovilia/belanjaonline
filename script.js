@@ -716,7 +716,7 @@ total,
 items
 ){
 
-const data={
+const data = {
 
 nama:nama,
 pengiriman:pengiriman,
@@ -730,42 +730,25 @@ qty:item.qty,
 harga:item.harga,
 subtotal:item.harga * item.qty
 
-})),
-
-lokasi: lokasiUser
+}))
 
 };
+
 try{
 
 await fetch(
-
 'https://script.google.com/macros/s/AKfycbxWfHVxDop4n8SqwP1vxGLj1D4jnTe7_iTrqGJ4bm9dDW0BiDDSxOPpy7X5Dcvb1dEa/exec',
-
 {
 method:'POST',
-
-mode:'no-cors',
-
-headers:{
-'Content-Type':'text/plain'
-},
-
 body:JSON.stringify(data)
-
 }
-
 );
 
-console.log(
-'Rekap berhasil dikirim'
-);
+console.log('Rekap berhasil');
 
 }catch(error){
 
-console.log(
-'Error kirim rekap:',
-error
-);
+console.log(error);
 
 }
 
