@@ -357,15 +357,6 @@ text-align:center;
 .popup-content h2{
 margin-bottom:10px;
 }
-
-.popup-qty{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-margin:20px 0;
-}
-
 .popup-qty button{
 width:40px;
 height:40px;
