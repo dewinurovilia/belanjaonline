@@ -82,7 +82,7 @@ LOAD PRODUK FIREBASE
 function loadProduk(){
 
 const produkRef =
-ref(firebaseDB, "produk");
+ref(firebaseDB);
 
 onValue(produkRef,(snapshot)=>{
 
@@ -690,20 +690,7 @@ updateCart();
 toggleMetode();
 
 }
-/* =========================
-KIRIM PESANAN KE KASIR
-========================= */
 
-async function kirimPesananKasir(data){
-
-    const id = Date.now();
-
-    await set(
-        ref(firebaseDB, "pesanan/" + id),
-        data
-    );
-
-}
 /* =========================
 KIRIM REKAP GOOGLE SHEET
 ========================= */
@@ -716,7 +703,7 @@ total,
 items
 ){
 
-const data = {
+const data={
 
 nama:nama,
 pengiriman:pengiriman,
@@ -730,25 +717,42 @@ qty:item.qty,
 harga:item.harga,
 subtotal:item.harga * item.qty
 
-}))
+})),
+
+lokasi: lokasiUser
 
 };
-
 try{
 
 await fetch(
+
 'https://script.google.com/macros/s/AKfycbxWfHVxDop4n8SqwP1vxGLj1D4jnTe7_iTrqGJ4bm9dDW0BiDDSxOPpy7X5Dcvb1dEa/exec',
+
 {
 method:'POST',
+
+mode:'no-cors',
+
+headers:{
+'Content-Type':'text/plain'
+},
+
 body:JSON.stringify(data)
+
 }
+
 );
 
-console.log('Rekap berhasil');
+console.log(
+'Rekap berhasil dikirim'
+);
 
 }catch(error){
 
-console.log(error);
+console.log(
+'Error kirim rekap:',
+error
+);
 
 }
 
@@ -850,6 +854,7 @@ console.log(error);
 }
 
 }
+
 /* =========================
 CHECKOUT WHATSAPP
 ========================= */
@@ -1004,47 +1009,15 @@ text +=
 `Terima kasih 🙏`;
 
 /* KIRIM REKAP */
+
 await kirimRekap(
-
-    nama,
-
-    pengiriman,
-
-    pembayaran,
-
-    totalBelanja,
-
-    cart
-
+nama,
+pengiriman,
+pembayaran,
+totalBelanja,
+cart
 );
-const dataPesanan = {
 
-    nama: nama,
-
-    pengiriman: pengiriman,
-
-    pembayaran: pembayaran,
-
-    produk: cart,
-
-    total: totalBelanja,
-
-    waktu: new Date().toLocaleString(),
-
-    status: "Belum Dicetak"
-
-};
-
-await set(
-
-ref(
-firebaseDB,
-'pesanan/' + Date.now()
-),
-
-dataPesanan
-
-);
 /* DELAY */
 
 await new Promise(resolve =>
@@ -1120,7 +1093,7 @@ await set(
 
 ref(
 firebaseDB,
-'produk/' + produk[indexProduk].firebaseKey + '/stok'
+produk[indexProduk].firebaseKey + '/stok'
 ),
 
 stokBaru
