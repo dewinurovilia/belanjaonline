@@ -82,7 +82,7 @@ LOAD PRODUK FIREBASE
 function loadProduk(){
 
 const produkRef =
-ref(firebaseDB);
+ref(firebaseDB,"produk");
 
 onValue(produkRef,(snapshot)=>{
 
@@ -1126,10 +1126,7 @@ stokSekarang - itemCart.qty,
 
 await set(
 
-ref(
-firebaseDB,
-produk[indexProduk].firebaseKey + '/stok'
-),
+ref(firebaseDB,'produk/' +produk[indexProduk].firebaseKey +'/stok'),
 
 stokBaru
 
