@@ -17,12 +17,8 @@ background:#f3f4f6;
 color:#111827;
 }
 
-/* =========================
-BODY
-========================= */
-
 body{
-padding-bottom:90px;
+padding-bottom:80px;
 }
 
 /* =========================
@@ -34,7 +30,7 @@ position:sticky;
 top:0;
 z-index:1000;
 
-height:74px;
+height:62px;
 
 background:#16a34a;
 
@@ -42,35 +38,31 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 
-padding:0 16px;
+padding:0 12px;
 
-box-shadow:0 2px 10px rgba(0,0,0,.08);
+box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
 .topbar h1{
-font-size:20px;
+font-size:15px;
 font-weight:700;
 color:white;
-letter-spacing:.5px;
 }
 
 .top-btn{
-width:54px;
-height:54px;
+width:38px;
+height:38px;
 
 border:none;
-border-radius:18px;
+border-radius:12px;
 
 background:white;
 
-font-size:28px;
-font-weight:bold;
+font-size:18px;
 
 display:flex;
 align-items:center;
 justify-content:center;
-
-box-shadow:0 4px 10px rgba(0,0,0,.08);
 }
 
 /* =========================
@@ -87,7 +79,7 @@ SEARCH
 ========================= */
 
 .search-container{
-padding:14px;
+padding:10px 12px;
 }
 
 .search-box{
@@ -97,24 +89,23 @@ display:flex;
 align-items:center;
 
 width:100%;
-height:60px;
+height:48px;
 
 background:white;
 
-border-radius:22px;
+border-radius:16px;
 
-padding:0 56px 0 52px;
+padding:0 46px 0 42px;
 
-box-shadow:0 4px 12px rgba(0,0,0,.05);
-
-overflow:hidden;
+box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
 .search-icon{
 position:absolute;
-left:18px;
 
-font-size:24px;
+left:14px;
+
+font-size:18px;
 color:#9ca3af;
 }
 
@@ -126,34 +117,27 @@ outline:none;
 
 background:transparent;
 
-font-size:16px;
+font-size:13px;
 font-weight:500;
-
-color:#111827;
-}
-
-.search-box input::placeholder{
-color:#9ca3af;
 }
 
 .clear-search{
 position:absolute;
 
-right:12px;
+right:8px;
 top:50%;
 
 transform:translateY(-50%);
 
-width:40px;
-height:40px;
+width:30px;
+height:30px;
 
 border:none;
-border-radius:14px;
+border-radius:10px;
 
 background:#f3f4f6;
 
-font-size:18px;
-font-weight:bold;
+font-size:14px;
 
 display:flex;
 align-items:center;
@@ -164,48 +148,46 @@ justify-content:center;
 KATEGORI
 ========================= */
 
-.kategori-scroll{
+#kategoriList{
 display:flex;
 
-gap:10px;
+gap:8px;
 
 overflow-x:auto;
 overflow-y:hidden;
 
-padding:0 14px 14px;
+padding:0 12px 10px;
 
 scrollbar-width:none;
 
 -webkit-overflow-scrolling:touch;
 }
 
-.kategori-scroll::-webkit-scrollbar{
+#kategoriList::-webkit-scrollbar{
 display:none;
 }
 
-.kategori-scroll button{
+#kategoriList button{
 flex-shrink:0;
 
-padding:10px 18px;
+padding:7px 14px;
 
 border:none;
 border-radius:999px;
 
 background:white;
 
-font-size:14px;
+font-size:11px;
 font-weight:600;
 
 color:#374151;
 
-box-shadow:0 2px 8px rgba(0,0,0,.05);
-
-transition:.2s;
+box-shadow:0 2px 6px rgba(0,0,0,.04);
 
 white-space:nowrap;
 }
 
-.kategori-scroll button.active{
+#kategoriList button.active{
 background:#16a34a;
 color:white;
 }
@@ -215,11 +197,12 @@ PRODUCT LIST
 ========================= */
 
 #productList{
-padding:0 14px 100px;
+padding:0 10px 90px;
 
 display:flex;
 flex-direction:column;
-gap:12px;
+
+gap:8px;
 }
 
 /* =========================
@@ -231,21 +214,17 @@ width:100%;
 
 background:white;
 
-border-radius:26px;
+border-radius:16px;
 
-padding:14px 16px;
+padding:10px 12px;
 
 display:flex;
 align-items:center;
 justify-content:space-between;
 
-gap:14px;
+gap:10px;
 
-box-shadow:0 4px 12px rgba(0,0,0,.05);
-
-transition:.2s;
-
-overflow:hidden;
+box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
 .produk-card:active{
@@ -253,27 +232,27 @@ transform:scale(.98);
 }
 
 /* =========================
-KIRI
+LEFT
 ========================= */
 
 .produk-left{
-min-width:78px;
+min-width:55px;
 
 display:flex;
 flex-direction:column;
-gap:5px;
+gap:2px;
 }
 
 .produk-kategori{
-font-size:13px;
+font-size:10px;
 font-weight:600;
 color:#6b7280;
 }
 
+/* HILANGKAN STOK */
+
 .produk-stok{
-font-size:12px;
-font-weight:500;
-color:#6b7280;
+display:none;
 }
 
 /* =========================
@@ -283,10 +262,10 @@ NAMA
 .produk-nama{
 flex:1;
 
-font-size:17px;
+font-size:13px;
 font-weight:700;
 
-line-height:1.25;
+line-height:1.2;
 
 color:#111827;
 }
@@ -296,7 +275,7 @@ HARGA
 ========================= */
 
 .produk-harga{
-font-size:17px;
+font-size:13px;
 font-weight:700;
 
 color:#16a34a;
@@ -305,12 +284,11 @@ white-space:nowrap;
 }
 
 /* =========================
-STOK HABIS
+PRODUK HABIS
 ========================= */
 
 .produk-habis{
-opacity:.65;
-filter:grayscale(.2);
+opacity:.55;
 }
 
 .produk-habis .produk-harga{
@@ -335,7 +313,7 @@ display:flex;
 align-items:center;
 justify-content:space-around;
 
-padding:10px 8px;
+padding:6px 4px;
 
 box-shadow:0 -2px 10px rgba(0,0,0,.08);
 
@@ -351,9 +329,9 @@ flex-direction:column;
 align-items:center;
 justify-content:center;
 
-gap:4px;
+gap:3px;
 
-font-size:13px;
+font-size:10px;
 font-weight:600;
 
 color:#4b5563;
@@ -362,7 +340,7 @@ width:33%;
 }
 
 .bottom-menu button span{
-font-size:24px;
+font-size:18px;
 }
 
 /* =========================
@@ -374,28 +352,28 @@ position:relative;
 
 background:#f3f4f6 !important;
 
-padding:12px 0 !important;
+padding:8px 0 !important;
 
-border-radius:22px;
+border-radius:16px;
 }
 
 #bottomCartCount{
 position:absolute;
 
-top:-4px;
-right:24px;
+top:-3px;
+right:18px;
 
 background:red;
 color:white;
 
-min-width:24px;
-height:24px;
+min-width:18px;
+height:18px;
 
-padding:0 6px;
+padding:0 4px;
 
 border-radius:999px;
 
-font-size:12px;
+font-size:10px;
 font-weight:700;
 
 display:flex;
@@ -414,7 +392,7 @@ top:0;
 right:-100%;
 
 width:100%;
-max-width:420px;
+max-width:380px;
 height:100%;
 
 background:white;
@@ -423,7 +401,7 @@ z-index:9999;
 
 transition:.3s;
 
-padding:20px;
+padding:16px;
 
 overflow-y:auto;
 }
@@ -441,11 +419,11 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 
-margin-bottom:20px;
+margin-bottom:16px;
 }
 
 .cart-header h2{
-font-size:28px;
+font-size:22px;
 font-weight:700;
 }
 
@@ -453,7 +431,7 @@ font-weight:700;
 border:none;
 background:none;
 
-font-size:32px;
+font-size:24px;
 }
 
 /* =========================
@@ -464,54 +442,45 @@ INPUT
 .cart-box select{
 width:100%;
 
-height:54px;
+height:46px;
 
 border:1px solid #e5e7eb;
-border-radius:16px;
+border-radius:14px;
 
-padding:0 16px;
+padding:0 14px;
 
-font-size:15px;
+font-size:13px;
 
-margin-bottom:12px;
-
-background:white;
+margin-bottom:10px;
 }
 
 /* =========================
 BUTTON
 ========================= */
 
-.checkout-btn{
+.checkout-btn,
+.reset-btn{
 width:100%;
-height:56px;
+
+height:48px;
 
 border:none;
-border-radius:18px;
+border-radius:14px;
 
-background:#16a34a;
-color:white;
-
-font-size:16px;
+font-size:14px;
 font-weight:700;
 
-margin-top:10px;
+margin-top:8px;
+}
+
+.checkout-btn{
+background:#16a34a;
+color:white;
 }
 
 .reset-btn{
-width:100%;
-height:56px;
-
-border:none;
-border-radius:18px;
-
 background:#ef4444;
 color:white;
-
-font-size:16px;
-font-weight:700;
-
-margin-top:10px;
 }
 
 /* =========================
@@ -534,7 +503,7 @@ display:none;
 align-items:center;
 justify-content:center;
 
-padding:20px;
+padding:16px;
 
 z-index:99999;
 }
@@ -545,89 +514,96 @@ display:flex;
 
 .popup-content{
 width:100%;
-max-width:360px;
+max-width:320px;
 
 background:white;
 
-border-radius:28px;
+border-radius:20px;
 
-padding:24px;
+padding:18px;
 }
 
 .popup-content h2{
-font-size:28px;
+font-size:18px;
 font-weight:700;
 
-margin-bottom:10px;
+margin-bottom:6px;
 }
+
+#popupHarga{
+font-size:14px;
+font-weight:700;
+color:#16a34a;
+}
+
+/* =========================
+QTY
+========================= */
 
 .popup-qty{
 display:flex;
 align-items:center;
 justify-content:center;
 
-gap:14px;
+gap:10px;
 
-margin:24px 0;
+margin:18px 0;
 }
 
 .popup-qty button{
-width:50px;
-height:50px;
+width:38px;
+height:38px;
 
 border:none;
-border-radius:16px;
+border-radius:12px;
 
 background:#16a34a;
 color:white;
 
-font-size:26px;
+font-size:20px;
 font-weight:bold;
 }
 
 .popup-qty input{
-width:90px;
-height:50px;
+width:70px;
+height:38px;
 
 border:1px solid #e5e7eb;
-border-radius:16px;
+border-radius:12px;
 
 text-align:center;
 
-font-size:22px;
+font-size:16px;
 font-weight:700;
+}
+
+/* =========================
+POPUP BUTTON
+========================= */
+
+.popup-btn,
+.popup-close{
+width:100%;
+
+height:44px;
+
+border:none;
+border-radius:14px;
+
+font-size:14px;
+font-weight:700;
+
+margin-top:8px;
 }
 
 .popup-btn{
-width:100%;
-height:54px;
-
-border:none;
-border-radius:18px;
-
 background:#16a34a;
 color:white;
-
-font-size:16px;
-font-weight:700;
-
-margin-top:10px;
 }
 
 .popup-close{
-width:100%;
-height:54px;
-
-border:1px solid #d1d5db;
-border-radius:18px;
-
-background:white;
-color:#111827;
-
-font-size:16px;
-font-weight:700;
-
-margin-top:10px;
+background:#ef4444;
+color:white;
 }
 
 /* =========================
@@ -637,7 +613,7 @@ TOAST
 #toast{
 position:fixed;
 
-bottom:100px;
+bottom:80px;
 left:50%;
 
 transform:translateX(-50%);
@@ -645,16 +621,14 @@ transform:translateX(-50%);
 background:#111827;
 color:white;
 
-padding:12px 18px;
+padding:10px 16px;
 
-border-radius:14px;
+border-radius:12px;
 
-font-size:14px;
+font-size:12px;
 font-weight:600;
 
 opacity:0;
-
-pointer-events:none;
 
 transition:.3s;
 
@@ -663,29 +637,4 @@ z-index:999999;
 
 #toast.show{
 opacity:1;
-}
-
-/* =========================
-RESPONSIVE
-========================= */
-
-@media(max-width:480px){
-
-.topbar h1{
-font-size:18px;
-}
-
-.produk-card{
-padding:12px 14px;
-border-radius:22px;
-}
-
-.produk-nama{
-font-size:15px;
-}
-
-.produk-harga{
-font-size:15px;
-}
-
 }
