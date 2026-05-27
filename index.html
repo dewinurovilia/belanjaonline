@@ -58,12 +58,14 @@ class="kategori-list">
 </div>
 
 </div>
+<!-- =========================
+TOPBAR
+========================= -->
 
-<!-- TOPBAR -->
 <div class="topbar">
 
 <button
-class="menu-toggle"
+class="top-btn"
 onclick="toggleSidebar()">
 
 ☰
@@ -71,14 +73,25 @@ onclick="toggleSidebar()">
 </button>
 
 <h1>TOKO DEFANA</h1>
+
 <button
+class="top-btn"
 id="bantuanBtn"
 onclick="openBantuan()">
 
 ❓
 
 </button>
+
 </div>
+
+<!-- =========================
+MAIN
+========================= -->
+
+<div class="main">
+
+<!-- SEARCH -->
 
 <div class="search-box">
 
@@ -102,11 +115,20 @@ onclick="clearSearch()">
 
 </div>
 
-<div class="main">
+<!-- KATEGORI -->
 
-<div id="productList" class="products-grid"></div>
+<div
+id="kategoriList"
+class="kategori-list">
 
 </div>
+
+<!-- PRODUK -->
+
+<div id="productList"></div>
+
+</div>
+
 <!-- =========================
 CART BOX
 ========================= -->
@@ -135,6 +157,7 @@ onclick="toggleCart()">
 type="text"
 id="namaPemesan"
 placeholder="👤 Nama Pemesan">
+
 <div
 id="warningNama"
 class="warning-text"
@@ -143,6 +166,7 @@ style="display:none;">
 Nama wajib diisi
 
 </div>
+
 <select
 id="pengiriman"
 onchange="toggleMetode()">
@@ -211,6 +235,7 @@ onclick="resetCart()">
 </button>
 
 </div>
+
 <!-- =========================
 POPUP PRODUK
 ========================= -->
@@ -266,6 +291,151 @@ Tutup
 </div>
 
 </div>
+
+<!-- =========================
+BOTTOM MENU
+========================= -->
+
+<div class="bottom-menu">
+
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+<span>🏠</span>
+
+Home
+
+</button>
+
+<button onclick="bukaLokasiPopup()">
+
+<span>📍</span>
+
+Lokasi
+
+</button>
+
+<button
+onclick="toggleCart()"
+class="menu-cart">
+
+<span>🛒</span>
+
+Keranjang
+
+<div id="bottomCartCount">
+0
+</div>
+
+</button>
+
+</div>
+
+<!-- =========================
+POPUP LOKASI
+========================= -->
+
+<div id="popupLokasi" class="popup">
+
+<div class="popup-content">
+
+<h2>📍 Buka Google Maps?</h2>
+
+<p>
+Lokasi toko akan dibuka di Google Maps
+</p>
+
+<div class="popup-actions">
+
+<button
+class="popup-btn"
+onclick="bukaMaps()">
+
+Buka
+
+</button>
+
+<button
+class="popup-close"
+onclick="tutupPopupLokasi()">
+
+Batal
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================
+POPUP BANTUAN
+========================= -->
+
+<div
+class="popup"
+id="popupBantuan">
+
+<div class="popup-content bantuan-content">
+
+<h2>❓ Bantuan Checkout</h2>
+
+<h3>📍 Lokasi Ditolak?</h3>
+
+<ol>
+
+<li>Klik ikon gembok/browser</li>
+
+<li>Aktifkan izin lokasi</li>
+
+<li>Refresh halaman</li>
+
+</ol>
+
+<h3>🛒 Cara Checkout WA</h3>
+
+<ol>
+
+<li>Tambahkan produk ke keranjang</li>
+
+<li>Isi nama pemesan</li>
+
+<li>Pilih pembayaran</li>
+
+<li>Klik checkout WhatsApp</li>
+
+<li>Kirim pesan di WhatsApp</li>
+
+</ol>
+
+<h3>📲 Cara Menjadikan Aplikasi</h3>
+
+<ol>
+
+<li>Buka website melalui Chrome</li>
+
+<li>Tekan tombol titik 3</li>
+
+<li>Pilih Tambahkan ke layar utama</li>
+
+<li>Tekan Install/Tambahkan</li>
+
+<li>Aplikasi muncul di beranda HP</li>
+
+</ol>
+
+<button
+class="popup-btn"
+onclick="closeBantuan()">
+
+Mengerti
+
+</button>
+
+</div>
+
+</div>
+
 <!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 
@@ -490,54 +660,6 @@ maximumAge:0
 }
 
 </script>
-<!-- POPUP BANTUAN -->
-
-<div
-class="popup"
-id="popupBantuan">
-
-<div class="popup-content">
-
-<!-- POPUP BANTUAN -->
-<div class="popup-content bantuan-content">
-
-<h2>❓ Bantuan Checkout</h2>
-
-<h3>📍 Lokasi Ditolak?</h3>
-
-<ol>
-<li>Klik ikon gembok/browser</li>
-<li>Aktifkan izin lokasi</li>
-<li>Refresh halaman</li>
-</ol>
-
-<h3>🛒 Cara Checkout WA</h3>
-
-<ol>
-<li>Tambahkan produk ke keranjang</li>
-<li>Isi nama pemesan</li>
-<li>Pilih pembayaran</li>
-<li>Klik checkout WhatsApp</li>
-<li>Kirim pesan di WhatsApp</li>
-</ol>
-
-<h3>📲 Cara Menjadikan Aplikasi</h3>
-
-<ol>
-<li>Buka website melalui Chrome</li>
-<li>Tekan tombol titik 3</li>
-<li>Pilih "Tambahkan ke layar utama"</li>
-<li>Tekan Install/Tambahkan</li>
-<li>Aplikasi muncul di beranda HP</li>
-</ol>
-
-<button
-class="popup-btn"
-onclick="closeBantuan()">
-
-Mengerti
-
-</button>
 
 </div>
 
