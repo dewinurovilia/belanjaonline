@@ -1178,36 +1178,6 @@ window.resetCart = function(){
 
 };
 
-window.closeSidebar = function(){
-
-  const sidebar =
-  document.querySelector('.sidebar');
-
-  const overlay =
-  document.querySelector('.sidebar-overlay');
-
-  sidebar.classList.remove('active');
-
-  overlay.classList.remove('active');
-
-};
-
-/* TOGGLE SIDEBAR */
-
-window.toggleSidebar = function(){
-
-  const sidebar =
-  document.querySelector('.sidebar');
-
-  const overlay =
-  document.querySelector('.sidebar-overlay');
-
-  sidebar.classList.toggle('active');
-
-  overlay.classList.toggle('active');
-
-};
-
 /* =========================
 BUTTON LOADING
 ========================= */
