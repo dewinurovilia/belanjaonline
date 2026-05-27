@@ -564,8 +564,7 @@ cartBox.innerHTML += `
 <h3>${item.nama}</h3>
 
 <p>
-${item.qty} x
-Rp ${Number(item.harga).toLocaleString('id-ID')}
+${item.qty} x Rp ${Number(item.harga).toLocaleString('id-ID')}
 </p>
 
 <b>
@@ -578,22 +577,16 @@ Rp ${subtotal.toLocaleString('id-ID')}
 
 <div class="qty-box">
 
-<button
-onclick="kurangQtyCart(${index})">
-
+<button onclick="kurangQtyCart(${index})">
 −
-
 </button>
 
 <span>
 ${item.qty}
 </span>
 
-<button
-onclick="tambahQtyCart(${index})">
-
+<button onclick="tambahQtyCart(${index})">
 +
-
 </button>
 
 </div>
@@ -611,7 +604,6 @@ onclick="hapusCart(${index})">
 </div>
 
 `;
-
 });
 
 /* TOTAL */
