@@ -4,52 +4,68 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="theme-color" content="#16a34a">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
+
 <meta
 name="viewport"
 content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#16a34a">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta
+name="apple-mobile-web-app-status-bar-style"
+content="default">
 
 <title>TOKO DEFANA</title>
 
 <link
 rel="stylesheet"
 href="style.css">
-<link rel="icon"
+
+<link
+rel="icon"
 href="https://cdn-icons-png.flaticon.com/512/263/263142.png">
 
 <link
 href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
 rel="stylesheet">
 
-<link rel="manifest" href="manifest.json">
-
-<meta name="theme-color" content="#16a34a">
-
-<meta name="mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link
+rel="manifest"
+href="manifest.json">
 
 </head>
 
 <body>
 
+<!-- =========================
+SIDEBAR OVERLAY
+========================= -->
 
-<!-- SIDEBAR -->
+<div
+class="sidebar-overlay"
+onclick="toggleSidebar()">
+</div>
+
+<!-- =========================
+SIDEBAR
+========================= -->
+
 <div class="sidebar">
 
 <h2>Kategori</h2>
 
 <div
 id="kategoriListSidebar"
-class="kategori-list">
+class="kategori-sidebar">
 
 </div>
 
 </div>
+
 <!-- =========================
 TOPBAR
 ========================= -->
@@ -68,7 +84,6 @@ onclick="toggleSidebar()">
 
 <button
 class="top-btn"
-id="bantuanBtn"
 onclick="openBantuan()">
 
 ❓
@@ -85,14 +100,12 @@ MAIN
 
 <!-- SEARCH -->
 
-<div class="search-box">
-
 <div class="search-wrapper">
 
-<input 
-type="text" 
-id="searchInput" 
-placeholder="Cari produk..." 
+<input
+type="text"
+id="searchInput"
+placeholder="Cari produk..."
 oninput="renderProduk()">
 
 <button
@@ -102,8 +115,6 @@ onclick="clearSearch()">
 ✕
 
 </button>
-
-</div>
 
 </div>
 
@@ -125,7 +136,9 @@ class="kategori-list">
 CART BOX
 ========================= -->
 
-<div class="cart-box" id="cartBox">
+<div
+class="cart-box"
+id="cartBox">
 
 <div class="cart-header">
 
@@ -191,17 +204,21 @@ onchange="toggleQR()">
 
 <!-- QR -->
 
-<div id="qrBox" style="display:none;">
+<div
+id="qrBox"
+style="display:none;">
 
 <p class="qr-title">
+
 Scan QR Pembayaran
+
 </p>
 
 <img src="img/barcode.png">
 
 </div>
 
-<!-- RINCIAN BELANJA -->
+<!-- CART ITEM -->
 
 <div id="cartItems"></div>
 
@@ -239,11 +256,15 @@ id="popupBox">
 <div class="popup-content">
 
 <h2 id="popupNama">
+
 Produk
+
 </h2>
 
 <p id="popupHarga">
+
 Rp 0
+
 </p>
 
 <div class="popup-qty">
@@ -285,58 +306,22 @@ Tutup
 </div>
 
 <!-- =========================
-BOTTOM MENU
-========================= -->
-
-<div class="bottom-menu">
-
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})">
-
-<span>🏠</span>
-
-Home
-
-</button>
-
-<button onclick="bukaLokasiPopup()">
-
-<span>📍</span>
-
-Lokasi
-
-</button>
-
-<button
-onclick="toggleCart()"
-class="menu-cart">
-
-<span>🛒</span>
-
-Keranjang
-
-<div id="bottomCartCount">
-0
-</div>
-
-</button>
-
-</div>
-
-<!-- =========================
 POPUP LOKASI
 ========================= -->
 
-<div id="popupLokasi" class="popup">
+<div
+id="popupLokasi"
+class="popup">
 
 <div class="popup-content">
 
 <h2>📍 Buka Google Maps?</h2>
 
 <p>
-Lokasi toko akan dibuka di Google Maps
-</p>
 
-<div class="popup-actions">
+Lokasi toko akan dibuka di Google Maps
+
+</p>
 
 <button
 class="popup-btn"
@@ -353,8 +338,6 @@ onclick="tutupPopupLokasi()">
 Batal
 
 </button>
-
-</div>
 
 </div>
 
@@ -400,22 +383,6 @@ id="popupBantuan">
 
 </ol>
 
-<h3>📲 Cara Menjadikan Aplikasi</h3>
-
-<ol>
-
-<li>Buka website melalui Chrome</li>
-
-<li>Tekan tombol titik 3</li>
-
-<li>Pilih Tambahkan ke layar utama</li>
-
-<li>Tekan Install/Tambahkan</li>
-
-<li>Aplikasi muncul di beranda HP</li>
-
-</ol>
-
 <button
 class="popup-btn"
 onclick="closeBantuan()">
@@ -428,12 +395,80 @@ Mengerti
 
 </div>
 
-<!-- FIREBASE -->
+<!-- =========================
+BOTTOM MENU
+========================= -->
+
+<div class="bottom-menu">
+
+<button
+onclick="window.scrollTo({
+top:0,
+behavior:'smooth'
+})">
+
+<span>🏠</span>
+
+Home
+
+</button>
+
+<button
+onclick="bukaLokasiPopup()">
+
+<span>📍</span>
+
+Lokasi
+
+</button>
+
+<button
+onclick="toggleCart()"
+class="menu-cart">
+
+<span>🛒</span>
+
+Keranjang
+
+<div id="bottomCartCount">
+
+0
+
+</div>
+
+</button>
+
+</div>
+
+<!-- =========================
+TOAST
+========================= -->
+
+<div id="toast">
+
+<span id="toastText"></span>
+
+</div>
+
+<!-- =========================
+FIREBASE
+========================= -->
+
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
 <!-- SCRIPT -->
-<script type="module" src="script.js"></script>
+
+<script
+type="module"
+src="script.js">
+</script>
+
+<!-- =========================
+SERVICE WORKER
+========================= -->
+
 <script>
 
 if('serviceWorker' in navigator){
@@ -454,6 +489,11 @@ console.log(
 }
 
 </script>
+
+<!-- =========================
+SIDEBAR
+========================= -->
+
 <script>
 
 function toggleSidebar(){
@@ -469,34 +509,28 @@ document
 }
 
 </script>
-<div id="toast" class="toast">
 
-<span id="toastText"></span>
+<!-- =========================
+POPUP LOKASI
+========================= -->
 
-</div>
 <script>
-
-/* BUKA POPUP */
 
 function bukaLokasiPopup(){
 
 document
 .getElementById("popupLokasi")
 .classList.add("active");
-document.body.classList.add("popup-open");
-}
 
-/* TUTUP POPUP */
+}
 
 function tutupPopupLokasi(){
 
 document
 .getElementById("popupLokasi")
 .classList.remove("active");
-document.body.classList.remove("popup-open");
-}
 
-/* BUKA MAPS */
+}
 
 function bukaMaps(){
 
@@ -508,6 +542,10 @@ window.open(
 
 </script>
 
+<!-- =========================
+AMBIL LOKASI USER
+========================= -->
+
 <script>
 
 let lokasiUser = "";
@@ -516,7 +554,9 @@ async function ambilLokasiUser(){
 
 if(!navigator.geolocation){
 
-alert("Browser tidak mendukung lokasi");
+alert(
+"Browser tidak mendukung lokasi"
+);
 
 return false;
 
@@ -543,19 +583,13 @@ resolve(true);
 
 (error)=>{
 
-/* JIKA DITOLAK */
-
 if(error.code === 1){
 
 showToast(
 'Aktifkan lokasi untuk checkout'
 );
 
-}
-
-/* JIKA GAGAL */
-
-else{
+}else{
 
 alert(
 "Gagal mengambil lokasi"
@@ -568,11 +602,9 @@ resolve(false);
 },
 
 {
-
 enableHighAccuracy:true,
 timeout:10000,
 maximumAge:0
-
 }
 
 );
@@ -582,5 +614,6 @@ maximumAge:0
 }
 
 </script>
+
 </body>
 </html>
