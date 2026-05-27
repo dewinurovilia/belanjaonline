@@ -904,10 +904,6 @@ console.log(error);
 CHECKOUT WHATSAPP
 ========================= */
 
-/* =========================
-CHECKOUT WHATSAPP
-========================= */
-
 window.checkoutWA = async function(){
 
 const btn =
