@@ -98,17 +98,18 @@ border-radius:12px;
 background:#f1f5f9;
 font-size:18px;
 }
-
 /* =========================
-KATEGORI
+KATEGORI MODERN
 ========================= */
 
 .kategori-list{
 display:flex;
-gap:8px;
+flex-wrap:nowrap;
 overflow-x:auto;
-padding-bottom:10px;
+gap:8px;
+padding:6px 2px 12px;
 scrollbar-width:none;
+-webkit-overflow-scrolling:touch;
 }
 
 .kategori-list::-webkit-scrollbar{
@@ -116,6 +117,7 @@ display:none;
 }
 
 .kategori-list button{
+flex:0 0 auto;
 border:none;
 background:white;
 padding:8px 14px;
@@ -131,8 +133,8 @@ box-shadow:0 2px 6px rgba(0,0,0,.05);
 background:#16a34a;
 color:white;
 }
-
 /* =========================
+
 PRODUCT LIST
 ========================= */
 
