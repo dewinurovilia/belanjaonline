@@ -32,60 +32,7 @@ rel="stylesheet">
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<style>
-    /* Pembungkus luar */
-    .kategori-container {
-      width: 100%;
-      overflow: hidden;
-      padding: 10px 0;
-      margin-bottom: 5px;
-    }
 
-    /* Membuat list menjadi satu baris dan bisa di-scroll ke samping */
-    .kategori-list {
-      display: flex;
-      gap: 8px; /* Jarak antar tombol */
-      overflow-x: auto; /* Mengaktifkan scroll horizontal */
-      scroll-behavior: smooth;
-      padding: 5px 16px;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* Sembunyikan scrollbar untuk Chrome, Safari, dan Opera */
-    .kategori-list::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Sembunyikan scrollbar untuk IE, Edge, dan Firefox */
-    .kategori-list {
-      -ms-overflow-style: none;  
-      scrollbar-width: none;  
-    }
-
-    /* Desain Tombol Kategori Modern Bulat */
-    .kategori-list button {
-      flex: 0 0 auto; /* Mencegah tombol mengempis */
-      padding: 8px 16px;
-      background-color: #ffffff;
-      color: #334155;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px; /* Membuat sudut membulat rapi */
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    /* Efek saat tombol kategori aktif/terpilih */
-    .kategori-list button.active {
-      background-color: #16a34a; /* Warna hijau sesuai tema Toko Defana Anda */
-      color: #ffffff;
-      border-color: #16a34a;
-      box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.3);
-    }
-  </style>
 </head>
 
 <body>
