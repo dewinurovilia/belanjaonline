@@ -1239,69 +1239,64 @@ function resetButton(button,text){
 /* =========================
 RENDER KATEGORI (UPDATED)
 ========================= */
+/* =========================
+RENDER KATEGORI
+========================= */
+
 function renderKategori(){
+
 const kategoriList =
 document.getElementById('kategoriList');
-  const kategoriSidebar =
-  document.getElementById('kategoriListSidebar');
 
-  if(!kategoriSidebar) return;
+if(!kategoriList) return;
 
-  const kategoriUnik = [
-    'Semua',
-    ...new Set(
-      produk.map(
-        item => item.kategori || 'Lainnya'
-      )
-    )
-  ];
+/* KOSONGKAN */
+kategoriList.innerHTML = '';
 
- if(kategoriSidebar){
-kategoriSidebar.innerHTML = '';
-}
+/* AMBIL KATEGORI */
+const kategoriUnik = [
 
-  if(kategoriSidebar){
-    kategoriSidebar.innerHTML = '';
-  }
+'Semua',
 
-  kategoriUnik.forEach(kat => {
+...new Set(
+produk.map(
+item => item.kategori || 'Lainnya'
+)
+)
 
-    const isAktif =
-    (kat === kategoriAktif)
-    ? 'class="active"'
-    : '';
+];
 
-    const tombol = `
-      <button
-      ${isAktif}
-      onclick="pilihKategori(this, '${kat}')">
+/* LOOP */
+kategoriUnik.forEach(kat => {
 
-      ${kat}
+const active =
+kat === kategoriAktif
+? 'active'
+: '';
 
-      </button>
-    `;
-   if(kategoriSidebar){
+kategoriList.innerHTML += `
 
-kategoriSidebar.innerHTML += tombol;
+<button
+class="${active}"
+onclick="pilihKategori('${kat}')">
 
-}
-  });
+${kat}
+
+</button>
+
+`;
+
+});
 
 }
 
-window.pilihKategori = function(element, kat) {
+window.pilihKategori = function(kat){
 
-  window.filterKategori(kat);
+kategoriAktif = kat;
 
-  renderKategori();
+renderKategori();
 
-  closeSidebar();
-
-  element.scrollIntoView({
-    behavior: 'smooth',
-    block: 'nearest',
-    inline: 'center'
-  });
+renderProduk();
 
 }
 
