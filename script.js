@@ -757,11 +757,20 @@ error
 }
 
 }
+
 async function simpanPesananFirebase(
 nama,
 items,
 total
 ){
+
+const sekarang = new Date();
+
+const tanggal =
+sekarang.toLocaleDateString('id-ID');
+
+const jam =
+sekarang.toLocaleTimeString('id-ID');
 
 const dataPesanan = {
 
@@ -771,7 +780,11 @@ produk:items,
 
 total:total,
 
-waktu:new Date().toLocaleString(),
+tanggal:tanggal,
+
+jam:jam,
+
+waktu:tanggal + ' ' + jam,
 
 status:"Belum Dicetak"
 
@@ -789,6 +802,7 @@ dataPesanan
 );
 
 }
+
 /* =========================
 TOGGLE METODE
 ========================= */
