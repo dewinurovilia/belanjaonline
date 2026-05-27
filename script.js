@@ -557,28 +557,56 @@ total += subtotal;
 
 cartBox.innerHTML += `
 
-<div class="cart-item">
+<div class="cart-item-modern">
 
-<h4>${item.nama}</h4>
+<div class="cart-info">
+
+<h3>${item.nama}</h3>
 
 <p>
 ${item.qty} x
-Rp ${Number(item.harga).toLocaleString()}
+Rp ${Number(item.harga).toLocaleString('id-ID')}
 </p>
 
 <b>
-Rp ${subtotal.toLocaleString()}
+Rp ${subtotal.toLocaleString('id-ID')}
 </b>
 
-<br><br>
+</div>
+
+<div class="cart-action">
+
+<div class="qty-box">
 
 <button
-class="btn-hapus-modern"
-onclick="hapusCart(${index})">
+onclick="kurangQtyCart(${index})">
 
-🗑 Hapus
+−
 
 </button>
+
+<span>
+${item.qty}
+</span>
+
+<button
+onclick="tambahQtyCart(${index})">
+
++
+
+</button>
+
+</div>
+
+<button
+class="hapus-btn"
+onclick="hapusCart(${index})">
+
+🗑
+
+</button>
+
+</div>
 
 </div>
 
@@ -677,6 +705,7 @@ bottomCount.innerHTML = cart.length;
 }
 
 }
+
 /* =========================
 HAPUS CART
 ========================= */
@@ -688,6 +717,56 @@ cart.splice(index,1);
 updateCart();
 
 toggleMetode();
+
+}
+
+/* =========================
+TAMBAH QTY CART
+========================= */
+
+window.tambahQtyCart = function(index){
+
+const item = cart[index];
+
+const produkAsli =
+produk.find(p => p.id == item.id);
+
+if(!produkAsli) return;
+
+if(item.qty >= produkAsli.stok){
+
+showToast(
+'Stok hanya tersisa ' +
+produkAsli.stok
+);
+
+return;
+
+}
+
+item.qty++;
+
+updateCart();
+
+}
+
+/* =========================
+KURANG QTY CART
+========================= */
+
+window.kurangQtyCart = function(index){
+
+if(cart[index].qty > 1){
+
+cart[index].qty--;
+
+}else{
+
+cart.splice(index,1);
+
+}
+
+updateCart();
 
 }
 
