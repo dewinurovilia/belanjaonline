@@ -904,6 +904,10 @@ console.log(error);
 CHECKOUT WHATSAPP
 ========================= */
 
+/* =========================
+CHECKOUT WHATSAPP
+========================= */
+
 window.checkoutWA = async function(){
 
 const btn =
@@ -920,15 +924,21 @@ btn.innerHTML = 'Mengirim...';
 /* DATA */
 
 const nama =
-document.getElementById('namaPemesan').value;
+document.getElementById(
+'namaPemesan'
+).value;
 
 const pembayaran =
-document.getElementById('pembayaran').value;
+document.getElementById(
+'pembayaran'
+).value;
 
 const pengiriman =
-document.getElementById('pengiriman').value;
+document.getElementById(
+'pengiriman'
+).value;
 
-/* VALIDASI */
+/* VALIDASI NAMA */
 
 if(!nama){
 
@@ -943,6 +953,8 @@ return;
 
 }
 
+/* VALIDASI CART */
+
 if(cart.length <= 0){
 
 showToast('Keranjang kosong');
@@ -956,7 +968,7 @@ return;
 
 }
 
-/* TOTAL */
+/* HITUNG TOTAL */
 
 let totalBelanja = 0;
 
@@ -1005,7 +1017,7 @@ text +=
 `💰 TOTAL : Rp ${totalBelanja
 .toLocaleString('id-ID')}%0A%0A`;
 
-/* MINIMAL */
+/* MINIMAL BELANJA */
 
 if(totalBelanja < 50000){
 
@@ -1022,7 +1034,7 @@ return;
 
 }
 
-/* LOKASI */
+/* AMBIL LOKASI */
 
 const izinLokasi =
 await ambilLokasiUser();
@@ -1040,8 +1052,10 @@ return;
 
 /* TAMBAH LOKASI */
 
-if(typeof lokasiUser !== 'undefined'
-&& lokasiUser){
+if(
+typeof lokasiUser !== 'undefined'
+&& lokasiUser
+){
 
 text +=
 `📍 Lokasi:%0A${lokasiUser}%0A%0A`;
@@ -1050,10 +1064,32 @@ text +=
 
 /* PENUTUP */
 
-text +=
-`Terima kasih`;
+text += 'Terima kasih';
 
-/* KIRIM REKAP */
+/* NOMOR WHATSAPP */
+
+const nomor =
+'6281554041777';
+
+/* LINK WA */
+
+const linkWA =
+`https://wa.me/${nomor}?text=${text}`;
+
+/* =========================
+BUKA WHATSAPP DULU
+========================= */
+
+window.open(
+linkWA,
+'_blank'
+);
+
+/* =========================
+SIMPAN DATA
+========================= */
+
+try{
 
 await kirimRekap(
 nama,
@@ -1062,27 +1098,24 @@ pembayaran,
 totalBelanja,
 cart
 );
+
 await simpanPesananFirebase(
 nama,
 cart,
 totalBelanja
 );
-/* DELAY */
-
-await new Promise(resolve =>
-setTimeout(resolve,1500)
-);
-
-/* KURANGI STOK */
 
 await kurangiStockCheckout();
 
-/* NOMOR WA */
+}catch(error){
 
-const nomor =
-'6281554041777';
+console.log(error);
 
-/* RESET */
+}
+
+/* =========================
+RESET CART
+========================= */
 
 cart = [];
 
@@ -1094,11 +1127,6 @@ localStorage.removeItem(
 'cartDefana'
 );
 
-/* BUKA WA */
-
-window.location.href =
-`https://wa.me/${nomor}?text=${text}`;
-
 /* RESET BUTTON */
 
 setTimeout(()=>{
@@ -1108,7 +1136,7 @@ btn.disabled = false;
 btn.innerHTML =
 '📲 Pesan via WhatsApp';
 
-},3000);
+},1500);
 
 }
 
