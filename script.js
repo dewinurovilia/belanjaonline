@@ -1503,3 +1503,58 @@ document
 document.body.classList.remove('popup-open');
 
 }
+/* =========================
+AMBIL LOKASI USER
+========================= */
+
+let lokasiUser = '';
+
+async function ambilLokasiUser(){
+
+return new Promise((resolve)=>{
+
+if(!navigator.geolocation){
+
+showToast('GPS tidak didukung');
+
+resolve(false);
+
+return;
+
+}
+
+navigator.geolocation.getCurrentPosition(
+
+(position)=>{
+
+const lat =
+position.coords.latitude;
+
+const lng =
+position.coords.longitude;
+
+lokasiUser =
+`https://maps.google.com/?q=${lat},${lng}`;
+
+resolve(true);
+
+},
+
+(error)=>{
+
+showToast('Lokasi ditolak');
+
+resolve(false);
+
+},
+
+{
+enableHighAccuracy:true,
+timeout:10000
+}
+
+);
+
+});
+
+}
