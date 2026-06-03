@@ -585,7 +585,7 @@ Rp ${subtotal.toLocaleString('id-ID')}
 class="hapus-btn"
 onclick="hapusCart(${index})">
 
-✕
+❌
 
 </button>
 
