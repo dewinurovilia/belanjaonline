@@ -575,31 +575,19 @@ Rp ${subtotal.toLocaleString('id-ID')}
 
 <div class="cart-action">
 
-<div class="qty-box">
+<button onclick="kurangQtyCart(${index})">−</button>
 
-<button onclick="kurangQtyCart(${index})">
-−
-</button>
+<span>${item.qty}</span>
 
-<span>
-${item.qty}
-</span>
-
-<button onclick="tambahQtyCart(${index})">
-+
-</button>
-
-</div>
+<button onclick="tambahQtyCart(${index})">+</button>
 
 <button
 class="hapus-btn"
 onclick="hapusCart(${index})">
 
-🗑
+✕
 
 </button>
-
-</div>
 
 </div>
 
