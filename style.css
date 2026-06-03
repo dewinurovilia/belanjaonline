@@ -411,12 +411,12 @@ img {
 }
 
 .cart-item {
-  background: var(--surface-muted);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  display: grid;
-  gap: 8px;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 12px;
 }
 
@@ -797,4 +797,32 @@ body.popup-open {
   .cart-item b {
     white-space: normal;
   }
+}
+.cart-item-info{
+  flex:1;
+}
+
+.cart-item-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.qty-btn{
+  width:34px;
+  height:34px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  background:#fff;
+  font-size:18px;
+}
+
+.delete-btn{
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:8px;
+  background:#fee2e2;
+  color:#dc2626;
+  font-size:18px;
 }
