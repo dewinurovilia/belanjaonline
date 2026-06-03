@@ -1,427 +1,209 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#16a34a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-<meta charset="UTF-8">
+  <title>Toko Defana</title>
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>TOKO DEFANA</title>
-
-<link
-rel="stylesheet"
-href="style.css">
-
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
-
-<link
-rel="manifest"
-href="manifest.json">
-
-<meta
-name="theme-color"
-content="#16a34a">
-
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+  <div class="sidebar-overlay" onclick="toggleSidebar()" aria-hidden="true"></div>
+
+  <aside class="sidebar" aria-label="Kategori produk">
+    <div class="sidebar-header">
+      <div>
+        <span class="eyebrow">Kategori</span>
+        <h2>Toko Defana</h2>
+      </div>
+      <button class="icon-btn" type="button" onclick="toggleSidebar()" aria-label="Tutup kategori">
+        &times;
+      </button>
+    </div>
+    <div id="kategoriListSidebar" class="kategori-list kategori-list-sidebar"></div>
+  </aside>
+
+  <header class="topbar">
+    <button class="icon-btn menu-toggle" type="button" onclick="toggleSidebar()" aria-label="Buka kategori">
+      &#9776;
+    </button>
+    <div class="brand">
+      <h1>TOKO DEFANA</h1>
+      <p>Belanja Online</p>
+    </div>
+    <button id="bantuanBtn" class="icon-btn" type="button" onclick="openBantuan()" aria-label="Bantuan checkout">
+      ?
+    </button>
+  </header>
+
+  <section class="search-box" aria-label="Cari produk">
+    <div class="search-wrapper">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari produk..."
+        autocomplete="off"
+        oninput="renderProduk()">
+      <button class="clear-search" type="button" onclick="clearSearch()" aria-label="Bersihkan pencarian">
+        &times;
+      </button>
+    </div>
+  </section>
+
+  <nav class="kategori-container" aria-label="Filter kategori">
+    <div id="kategoriList" class="kategori-list kategori-list-horizontal"></div>
+  </nav>
+
+  <main class="main">
+    <div id="productList" class="products-list">
+      <div class="empty-state">Memuat produk...</div>
+    </div>
+  </main>
+
+  <aside class="cart-box" id="cartBox" aria-label="Keranjang belanja">
+    <div class="cart-header">
+      <div>
+        <span class="eyebrow">Pesanan</span>
+        <h2>Keranjang</h2>
+      </div>
+      <button class="icon-btn close-btn" type="button" onclick="toggleCart()" aria-label="Tutup keranjang">
+        &times;
+      </button>
+    </div>
+
+    <div class="cart-form">
+      <input type="text" id="namaPemesan" placeholder="Nama pemesan" autocomplete="name">
+
+      <div id="warningNama" class="warning-text" hidden>
+        Nama wajib diisi
+      </div>
+
+      <select id="pengiriman" onchange="toggleMetode()" aria-label="Metode pengiriman">
+        <option value="Diantar">Diantar</option>
+        <option value="Ambil Sendiri">Ambil Sendiri</option>
+      </select>
+
+      <select id="pembayaran" onchange="toggleQR()" aria-label="Metode pembayaran">
+        <option value="COD">COD</option>
+        <option value="Transfer">Transfer</option>
+      </select>
+    </div>
+
+    <div id="qrBox" class="qr-box" hidden>
+      <p class="qr-title">Scan QR Pembayaran</p>
+      <img src="img/barcode.png" alt="QR pembayaran Toko Defana">
+    </div>
+
+    <div id="cartItems" class="cart-items"></div>
+    <div id="cartTotal" class="cart-total"></div>
+
+    <button id="btnWA" class="checkout-btn" type="button" onclick="checkoutWA()">
+      Pesan via WhatsApp
+    </button>
+
+    <button class="reset-btn" type="button" onclick="resetCart()">
+      Reset Keranjang
+    </button>
+  </aside>
+
+  <div class="popup" id="popupBox" aria-hidden="true">
+    <div class="popup-content">
+      <h2 id="popupNama">Produk</h2>
+      <p id="popupHarga" class="popup-price">Rp 0</p>
+
+      <div class="popup-qty">
+        <button type="button" onclick="popupKurang()" aria-label="Kurangi jumlah">&minus;</button>
+        <input type="number" id="popupQty" value="1" min="1" aria-label="Jumlah produk">
+        <button type="button" onclick="popupTambah()" aria-label="Tambah jumlah">+</button>
+      </div>
+
+      <button class="popup-btn" type="button" onclick="confirmAddCart()">Tambahkan</button>
+      <button class="popup-close" type="button" onclick="closePopup()">Tutup</button>
+    </div>
+  </div>
+
+  <div id="popupLokasi" class="popup" aria-hidden="true">
+    <div class="popup-content">
+      <h2>Buka Google Maps?</h2>
+      <p>Lokasi toko akan dibuka di Google Maps.</p>
+      <div class="popup-actions">
+        <button class="popup-btn" type="button" onclick="bukaMaps()">Buka</button>
+        <button class="popup-close" type="button" onclick="tutupPopupLokasi()">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup" id="popupBantuan" aria-hidden="true">
+    <div class="popup-content bantuan-content">
+      <h2>Bantuan Checkout</h2>
+
+      <h3>Lokasi ditolak?</h3>
+      <ol>
+        <li>Klik ikon gembok/browser.</li>
+        <li>Aktifkan izin lokasi.</li>
+        <li>Refresh halaman.</li>
+      </ol>
+
+      <h3>Cara checkout WhatsApp</h3>
+      <ol>
+        <li>Tambahkan produk ke keranjang.</li>
+        <li>Isi nama pemesan.</li>
+        <li>Pilih pembayaran.</li>
+        <li>Klik Pesan via WhatsApp.</li>
+        <li>Kirim pesan di WhatsApp.</li>
+      </ol>
+
+      <h3>Jadikan aplikasi</h3>
+      <ol>
+        <li>Buka website melalui Chrome.</li>
+        <li>Tekan tombol titik tiga.</li>
+        <li>Pilih Tambahkan ke layar utama.</li>
+        <li>Tekan Install atau Tambahkan.</li>
+      </ol>
+
+      <button class="popup-btn" type="button" onclick="closeBantuan()">Mengerti</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <nav class="bottom-menu" aria-label="Menu utama">
+    <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <span aria-hidden="true">Home</span>
+      <small>Beranda</small>
+    </button>
+    <button type="button" onclick="bukaLokasiPopup()">
+      <span aria-hidden="true">Maps</span>
+      <small>Lokasi</small>
+    </button>
+    <button type="button" onclick="toggleCart()" class="menu-cart">
+      <span aria-hidden="true">Cart</span>
+      <small>Keranjang</small>
+      <strong id="bottomCartCount">0</strong>
+    </button>
+  </nav>
+
+  <script type="module" src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').then(function(registration) {
+        registration.update();
+      });
+    }
+  </script>
+</body>
+</html>
 
-<!-- =========================
-TOPBAR
-========================= -->
-
-<div class="topbar">
-
-<h1>TOKO DEFANA</h1>
-
-<button
-class="help-btn"
-onclick="openBantuan()">
-
-❓
-
-</button>
-
-</div>
-
-<!-- =========================
-SEARCH
-========================= -->
-
-<div class="search-container">
-
-<div class="search-box">
-
-<span class="search-icon">
-
-🔍
-
-</span>
-
-<input
-type="text"
-id="searchInput"
-placeholder="Cari produk..."
-oninput="renderProduk()">
-
-<button
-class="clear-search"
-onclick="clearSearch()">
-
-✕
-
-</button>
-
-</div>
-
-</div>
-
-<!-- KATEGORI -->
-<div class="kategori-scroll" id="kategoriList"></div>
-
-<!-- =========================
-LIST PRODUK
-========================= -->
-
-<div id="productList">
-
-</div>
-
-<!-- =========================
-KERANJANG
-========================= -->
-
-<div
-class="cart-box"
-id="cartBox">
-
-<div class="cart-header">
-
-<h2>Keranjang</h2>
-
-<button
-class="close-btn"
-onclick="toggleCart()">
-
-✕
-
-</button>
-
-</div>
-
-<!-- FORM -->
-
-<div class="cart-form">
-
-<input
-type="text"
-id="namaPemesan"
-placeholder="👤 Nama Pemesan">
-
-<select
-id="pengiriman"
-onchange="toggleMetode()">
-
-<option value="Diantar">
-
-🚚 Diantar
-
-</option>
-
-<option value="Ambil Sendiri">
-
-🏪 Ambil Sendiri
-
-</option>
-
-</select>
-
-<select
-id="pembayaran"
-onchange="toggleQR()">
-
-<option value="COD">
-
-💵 COD
-
-</option>
-
-<option value="Transfer">
-
-🏦 Transfer
-
-</option>
-
-</select>
-
-</div>
-
-<!-- QR -->
-
-<div
-id="qrBox"
-style="display:none;">
-
-<p class="qr-title">
-
-Scan QR Pembayaran
-
-</p>
-
-<img
-src="img/barcode.png"
-class="qr-img">
-
-</div>
-
-<!-- CART ITEM -->
-
-<div id="cartItems"></div>
-
-<div id="cartTotal"></div>
-
-<!-- BUTTON -->
-
-<button
-id="btnWA"
-class="checkout-btn"
-onclick="checkoutWA()">
-
-📲 Checkout WhatsApp
-
-</button>
-
-<button
-class="reset-btn"
-onclick="resetCart()">
-
-🗑 Reset Keranjang
-
-</button>
-
-</div>
-
-<!-- =========================
-POPUP PRODUK
-========================= -->
-
-<div
-class="popup"
-id="popupBox">
-
-<div class="popup-content">
-
-<button
-class="popup-x"
-onclick="closePopup()">
-
-✕
-
-</button>
-
-<h2 id="popupNama">
-
-Produk
-
-</h2>
-
-<p id="popupHarga">
-
-Rp 0
-
-</p>
-
-<div class="popup-qty">
-
-<button onclick="popupKurang()">
-
-−
-
-</button>
-
-<input
-type="number"
-id="popupQty"
-value="1"
-min="1">
-
-<button onclick="popupTambah()">
-
-+
-
-</button>
-
-</div>
-
-<button
-class="popup-btn"
-onclick="confirmAddCart()">
-
-🛒 Tambah ke Keranjang
-
-</button>
-
-<button
-class="popup-close"
-onclick="closePopup()">
-
-Tutup
-
-</button>
-
-</div>
-
-</div>
-
-<!-- =========================
-BOTTOM MENU
-========================= -->
-
-<div class="bottom-menu">
-
-<button onclick="
-window.scrollTo({
-top:0,
-behavior:'smooth'
-})
-">
-
-<span>🏠</span>
-
-Home
-
-</button>
-
-<button onclick="bukaLokasiPopup()">
-
-<span>📍</span>
-
-Lokasi
-
-</button>
-
-<button
-onclick="toggleCart()"
-class="menu-cart">
-
-<span>🛒</span>
-
-Keranjang
-
-<div id="bottomCartCount">
-
-0
-
-</div>
-
-</button>
-
-</div>
-
-<!-- =========================
-POPUP LOKASI
-========================= -->
-
-<div
-id="popupLokasi"
-class="popup">
-
-<div class="popup-content">
-
-<h2>
-
-📍 Buka Google Maps?
-
-</h2>
-
-<p>
-
-Lokasi toko akan dibuka di Google Maps
-
-</p>
-
-<button
-class="popup-btn"
-onclick="bukaMaps()">
-
-Buka
-
-</button>
-
-<button
-class="popup-close"
-onclick="tutupPopupLokasi()">
-
-Batal
-
-</button>
-
-</div>
-
-</div>
-
-<!-- =========================
-POPUP BANTUAN
-========================= -->
-
-<div
-class="popup"
-id="popupBantuan">
-
-<div class="popup-content bantuan-content">
-
-<h2>
-
-❓ Bantuan Checkout
-
-</h2>
-
-<h3>
-
-🛒 Cara Checkout
-
-</h3>
-
-<ol>
-
-<li>
-Tambahkan produk
-</li>
-
-<li>
-Isi nama
-</li>
-
-<li>
-Pilih pembayaran
-</li>
-
-<li>
-Klik checkout
-</li>
-
-<li>
-Kirim WhatsApp
-</li>
-
-</ol>
-
-<button
-class="popup-btn"
-onclick="closeBantuan()">
-
-Mengerti
-
-</button>
-
-</div>
-
-</div>
 
 <!-- =========================
 TOAST
